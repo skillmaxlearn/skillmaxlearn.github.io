@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillM@X - Learn Future Skills</title>
+
+    <!-- Google Font & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #326acb;
+            --primary-dark: #214b8f;
+            --primary-light: #4d82e6;
+            --accent: #f4b000;
+            --accent-soft: #ffe18a;
+            --bg: #050816;
+            --bg-alt: #0b1535;
+            --text-main: #f5f7ff;
+            --text-muted: #a7b0d9;
+            --radius-lg: 18px;
+            --radius-md: 12px;
+            --radius-full: 999px;
+            --shadow-soft: 0 18px 40px rgba(0,0,0,0.45);
+            --shadow-glow: 0 0 24px rgba(244,176,0,0.65);
+            --transition-fast: 0.2s ease-out;
+            --transition-med: 0.35s ease-out;
+        }
+        *,*::before,*::after{box-sizing:border-box;}
+        html{scroll-behavior:smooth;}
+        body{
+            margin:0;
+            font-family:"Poppins",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+            background:radial-gradient(circle at top,#12265f 0,#050816 60%,#02020a 100%);
+            color:var(--text-main);
+            line-height:1.6;
+            overflow-x:hidden;
+        }
+        a{text-decoration:none;color:inherit;}
+        ul{list-style:none;margin:0;padding:0;}
+        .section{padding:6rem min(8vw,5rem);position:relative;z-index:1;}
+        .section-alt{background:radial-gradient(circle at top left,rgba(77,130,230,0.22),transparent 55%),var(--bg-alt);}
+        .section-header{max-width:720px;margin:0 auto 3rem;text-align:center;}
+        .section-header h2{font-size:clamp(2.1rem,2.5vw,2.6rem);margin-bottom:.7rem;}
+        .section-header p{color:var(--text-muted);font-size:.98rem;}
+
+        /* HEADER */
+        .header{
+            position:sticky;top:0;z-index:40;
+            padding:.7rem min(8vw,5rem);
+            display:flex;justify-content:space-between;align-items:center;
+            backdrop-filter:blur(18px);
+            background:linear-gradient(to bottom,rgba(5,8,22,.96),rgba(5,8,22,.7));
+            border-bottom:1px solid rgba(255,255,255,.06);
+        }
+        .logo-badge{
+            display:inline-flex;align-items:center;justify-content:center;
+            padding:.35rem .9rem;border-radius:999px;
+            background:radial-gradient(circle at 30% 0,#4d82e6,#214b8f 60%,#050816 100%);
+            box-shadow:var(--shadow-glow);gap:.12rem;
+            font-weight:700;letter-spacing:.03em;
+        }
+        .logo-badge.small{padding:.2rem .6rem;font-size:.85rem;}
+        .logo-main{color:#fff;}
+        .logo-mid,.logo-end{color:var(--accent);}
+        .navbar{display:flex;align-items:center;}
+        .nav-links{display:flex;gap:1.6rem;}
+        .nav-link{
+            position:relative;font-size:.95rem;color:var(--text-muted);
+            transition:color var(--transition-fast);
+        }
+        .nav-link::after{
+            content:"";position:absolute;left:0;bottom:-.3rem;width:0;height:2px;
+            border-radius:999px;
+            background:linear-gradient(90deg,var(--accent),var(--primary-light));
+            transition:width var(--transition-med);
+        }
+        .nav-link:hover,.nav-link.active{color:var(--text-main);}
+        .nav-link:hover::after,.nav-link.active::after{width:100%;}
+        .nav-toggle{
+            display:none;width:28px;height:22px;
+            flex-direction:column;justify-content:space-between;
+            margin-left:1rem;cursor:pointer;
+        }
+        .nav-toggle span{
+            height:3px;border-radius:999px;
+            background:var(--text-main);
+            transition:transform var(--transition-fast),opacity var(--transition-fast);
+        }
+
+        /* HERO */
+        .hero{
+            padding:6.5rem min(8vw,5rem) 5rem;
+            display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);
+            gap:3.5rem;align-items:center;position:relative;
+        }
+        .hero::before{
+            content:"";position:absolute;inset:0;
+            background:
+                radial-gradient(circle at 10% 0,rgba(77,130,230,.4),transparent 55%),
+                radial-gradient(circle at 90% 20,rgba(244,176,0,.22),transparent 55%);
+            pointer-events:none;
+        }
+        .hero-content{position:relative;z-index:1;}
+        .hero-pill{
+            display:inline-flex;align-items:center;gap:.4rem;
+            padding:.25rem .9rem;border-radius:999px;
+            border:1px solid rgba(255,255,255,.22);
+            color:var(--accent-soft);font-size:.75rem;
+            margin-bottom:.8rem;background:rgba(5,8,22,.6);
+        }
+        .hero-title{font-size:clamp(2.6rem,4vw,3.4rem);line-height:1.1;margin:0 0 1rem;}
+        .hero-title .accent{color:var(--accent);}
+        .hero-subtitle{color:var(--text-muted);font-size:.98rem;max-width:520px;margin-bottom:1.8rem;}
+        .hero-actions{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:2rem;}
+        .btn{
+            border-radius:var(--radius-full);padding:.8rem 1.6rem;border:none;
+            font-size:.94rem;font-weight:500;cursor:pointer;
+            display:inline-flex;align-items:center;justify-content:center;
+            letter-spacing:.03em;
+            transition:background var(--transition-med),color var(--transition-med),
+                transform var(--transition-fast),box-shadow var(--transition-fast),
+                border-color var(--transition-fast);
+        }
+        .btn-primary{
+            background:linear-gradient(135deg,var(--accent),#ffcf3a);
+            color:#1b1b1b;box-shadow:var(--shadow-glow);
+        }
+        .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(244,176,0,.7);}
+        .btn-ghost{
+            background:transparent;color:var(--text-main);
+            border:1px solid rgba(255,255,255,.22);
+        }
+        .btn-ghost:hover{border-color:var(--accent);background:rgba(255,255,255,.03);}
+        .full-width{width:100%;}
+        .hero-stats{display:flex;flex-wrap:wrap;gap:1rem;}
+        .stat-card{
+            background:linear-gradient(145deg,rgba(50,106,203,.9),rgba(5,8,22,.95));
+            border-radius:var(--radius-md);padding:.8rem 1.1rem;
+            border:1px solid rgba(255,255,255,.1);box-shadow:0 14px 30px rgba(0,0,0,.4);
+            min-width:120px;
+        }
+        .stat-number{display:block;font-weight:600;font-size:1.1rem;}
+        .stat-label{display:block;font-size:.75rem;color:var(--text-muted);}
+
+        .hero-visual{position:relative;min-height:260px;display:flex;align-items:center;justify-content:center;}
+        .holo-ring{
+            position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.25);
+            box-shadow:0 18px 45px rgba(0,0,0,.7);animation:spin 26s linear infinite;
+        }
+        .ring-outer{width:260px;height:260px;border-color:rgba(244,176,0,.4);}
+        .ring-middle{width:200px;height:200px;border-color:rgba(77,130,230,.8);animation-duration:22s;animation-direction:reverse;}
+        .ring-inner{width:140px;height:140px;border-color:rgba(255,255,255,.4);animation-duration:30s;}
+        .hero-node{
+            position:absolute;display:flex;align-items:center;gap:.5rem;
+            font-size:.8rem;padding:.4rem .65rem;border-radius:999px;
+            background:rgba(5,8,22,.9);border:1px solid rgba(255,255,255,.24);
+            box-shadow:var(--shadow-soft);
+        }
+        .node-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent);}
+        .node-1{top:12%;right:6%;}
+        .node-2{bottom:8%;left:10%;}
+        .node-3{bottom:20%;right:16%;}
+        .floating-chip{
+            position:absolute;display:inline-flex;align-items:center;gap:.35rem;
+            padding:.5rem .85rem;border-radius:999px;
+            background:rgba(5,8,22,.96);border:1px solid rgba(255,255,255,.22);
+            font-size:.8rem;box-shadow:var(--shadow-soft);
+        }
+        .floating-chip i{color:var(--accent-soft);}
+        .chip-1{top:0;left:5%;animation:float 6s ease-in-out infinite;}
+        .chip-2{bottom:0;right:2%;animation:float 7s ease-in-out infinite .7s;}
+
+        /* COURSES */
+        .course-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2rem;}
+        .course-card{
+            background:linear-gradient(155deg,rgba(15,25,70,.96),rgba(5,8,22,.98));
+            border-radius:var(--radius-lg);overflow:hidden;
+            border:1px solid rgba(255,255,255,.08);
+            box-shadow:0 16px 40px rgba(0,0,0,.6);
+            transition:transform var(--transition-med),box-shadow var(--transition-med),border-color var(--transition-med);
+            position:relative;
+        }
+        .course-card::before{
+            content:"";position:absolute;inset:0;
+            background:radial-gradient(circle at top right,rgba(244,176,0,.25),transparent 60%);
+            opacity:0;transition:opacity var(--transition-med);
+        }
+        .course-card:hover{
+            transform:translateY(-8px) scale(1.01);
+            box-shadow:0 20px 60px rgba(0,0,0,.8);
+            border-color:rgba(244,176,0,.55);
+        }
+        .course-card:hover::before{opacity:1;}
+
+        .course-image{
+            position:relative;
+            height:180px;
+            overflow:hidden;
+        }
+        .course-image img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            display:block;
+            filter:saturate(1.3) contrast(1.05);
+        }
+        .course-image::after{
+            content:"";
+            position:absolute;
+            inset:0;
+            background:linear-gradient(to bottom,rgba(5,8,22,0.1),rgba(5,8,22,0.75));
+        }
+        .course-chip{
+            position:absolute;top:12px;left:14px;
+            background:rgba(5,8,22,.9);padding:.25rem .7rem;
+            border-radius:999px;font-size:.7rem;
+            border:1px solid rgba(255,255,255,.2);
+            z-index:2;
+        }
+        .course-orb{
+            position:absolute;width:90px;height:90px;border-radius:50%;
+            filter:blur(4px);opacity:.75;mix-blend-mode:screen;z-index:1;
+        }
+        .orb-1{background:radial-gradient(circle,#ffd54f,transparent 70%);top:30%;left:55%;}
+        .orb-2{background:radial-gradient(circle,#4dd0e1,transparent 70%);top:30%;left:20%;}
+        .orb-3{background:radial-gradient(circle,#ff8a65,transparent 70%);top:30%;left:45%;}
+        .orb-4{background:radial-gradient(circle,#4caf50,transparent 70%);top:35%;left:30%;}
+        .orb-5{background:radial-gradient(circle,#ba68c8,transparent 70%);top:30%;left:60%;}
+        .orb-6{background:radial-gradient(circle,#90caf9,transparent 70%);top:30%;left:35%;}
+        .orb-7{background:radial-gradient(circle,#ff80ff,transparent 70%);top:32%;left:50%;}
+        .orb-8{background:radial-gradient(circle,#64b5f6,transparent 70%);top:32%;left:25%;}
+
+        /* Futuristic icon strip as overlay */
+        .course-icon-strip{
+            position:absolute;
+            bottom:10px;
+            left:50%;
+            transform:translateX(-50%);
+            display:flex;
+            gap:0.4rem;
+            padding:0.25rem 0.6rem;
+            border-radius:999px;
+            background:rgba(5,8,22,0.9);
+            border:1px solid rgba(255,255,255,0.25);
+            font-size:0.75rem;
+            z-index:2;
+        }
+        .course-icon{
+            width:22px;
+            height:22px;
+            border-radius:50%;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            background:rgba(255,255,255,0.06);
+            color:#fff;
+        }
+        .course-card:hover .course-icon{
+            background:rgba(244,176,0,0.28);
+            color:var(--accent-soft);
+        }
+
+        .course-body{padding:1.3rem 1.3rem 1.4rem;}
+        .course-body h3{margin:0 0 .4rem;}
+        .course-body p{margin:0 0 1.1rem;font-size:.9rem;color:var(--text-muted);}
+
+        /* ABOUT */
+        .about-layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:2.5rem;align-items:flex-start;}
+        .about-text p{margin-top:0;color:var(--text-muted);font-size:.94rem;}
+        .about-list{margin-top:1.3rem;display:grid;gap:.55rem;font-size:.9rem;}
+        .about-list li{display:flex;align-items:center;gap:.5rem;}
+        .about-list i{color:var(--accent);}
+        .about-panels{display:grid;gap:1rem;}
+        .about-panel{
+            background:radial-gradient(circle at top,rgba(77,130,230,.4),rgba(5,8,22,.95));
+            border-radius:var(--radius-md);padding:1.1rem 1.2rem;
+            border:1px solid rgba(255,255,255,.1);position:relative;overflow:hidden;
+        }
+        .about-panel::after{
+            content:"";position:absolute;inset:0;
+            background:radial-gradient(circle at top right,rgba(244,176,0,.45),transparent 60%);
+            opacity:.4;pointer-events:none;
+        }
+        .panel-label{
+            font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;
+            color:var(--accent-soft);
+        }
+        .about-panel h3{margin:.3rem 0 .3rem;}
+
+        /* CONTACT */
+        .contact-layout{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:2.5rem;align-items:flex-start;}
+        .contact-form{
+            background:rgba(5,8,22,.98);border-radius:var(--radius-lg);
+            padding:1.6rem 1.6rem 1.8rem;
+            border:1px solid rgba(255,255,255,.12);
+            box-shadow:0 16px 40px rgba(0,0,0,.7);
+        }
+        .form-group{margin-bottom:1rem;}
+        label{display:block;margin-bottom:.3rem;font-size:.84rem;color:var(--text-muted);}
+        input,textarea{
+            width:100%;border-radius:10px;border:1px solid rgba(255,255,255,.14);
+            background:rgba(8,13,40,.95);color:var(--text-main);
+            padding:.6rem .75rem;font-family:inherit;font-size:.9rem;
+            outline:none;transition:border-color var(--transition-fast),box-shadow var(--transition-fast),background var(--transition-fast);
+        }
+        input:focus,textarea:focus{
+            border-color:var(--accent);
+            box-shadow:0 0 0 1px rgba(244,176,0,.4);
+            background:rgba(8,13,40,1);
+        }
+        textarea{resize:vertical;min-height:120px;}
+        .form-status{margin-top:.6rem;font-size:.82rem;color:var(--accent-soft);}
+        .contact-direct p{color:var(--text-muted);font-size:.92rem;}
+        .contact-links{margin-top:1.2rem;display:grid;gap:.7rem;}
+        .contact-link{
+            display:flex;align-items:center;gap:.75rem;
+            padding:.65rem .85rem;border-radius:var(--radius-md);
+            border:1px solid rgba(255,255,255,.08);
+            background:rgba(5,8,22,.7);
+            transition:transform var(--transition-fast),border-color var(--transition-fast),background var(--transition-fast);
+        }
+        .contact-link:hover{
+            transform:translateY(-2px);
+            border-color:rgba(244,176,0,.6);
+            background:rgba(5,8,22,.98);
+        }
+        .contact-link h4{margin:0 0 .05rem;font-size:.92rem;}
+        .contact-link span{font-size:.8rem;color:var(--text-muted);}
+        .icon-circle{
+            width:38px;height:38px;border-radius:50%;
+            display:flex;align-items:center;justify-content:center;color:#fff;
+        }
+        .icon-circle.email{background:radial-gradient(circle,#ffca28,#f4b000);color:#1f1300;}
+        .icon-circle.linkedin{background:radial-gradient(circle,#4d82e6,#214b8f);}
+        .icon-circle.whatsapp{background:radial-gradient(circle,#25d366,#128c7e);}
+
+        /* FOOTER */
+        .footer{
+            background:#030510;border-top:1px solid rgba(255,255,255,.06);
+            padding:2.5rem min(8vw,5rem) 1.4rem;
+            color:var(--text-muted);font-size:.82rem;
+        }
+        .footer-main{
+            display:flex;flex-wrap:wrap;align-items:center;
+            justify-content:space-between;gap:1rem;
+        }
+        .footer-brand{display:flex;align-items:center;gap:.6rem;}
+        .footer-name{font-weight:600;color:var(--text-main);}
+        .footer-tagline{flex:1 1 220px;}
+        .footer-social{display:flex;gap:.6rem;}
+        .social-icon{
+            width:32px;height:32px;border-radius:50%;
+            border:1px solid rgba(255,255,255,.18);
+            display:flex;align-items:center;justify-content:center;
+            color:var(--text-main);
+            transition:background var(--transition-fast),color var(--transition-fast),
+                transform var(--transition-fast),border-color var(--transition-fast);
+        }
+        .social-icon:hover{
+            background:var(--accent);color:#111;border-color:transparent;transform:translateY(-2px);
+        }
+        .footer-bottom{
+            margin-top:1.4rem;display:flex;align-items:center;
+            justify-content:space-between;gap:1rem;
+            border-top:1px solid rgba(255,255,255,.06);padding-top:.9rem;
+        }
+        .back-to-top{
+            width:30px;height:30px;border-radius:999px;
+            border:1px solid rgba(255,255,255,.2);
+            display:inline-flex;align-items:center;justify-content:center;
+            color:var(--text-main);
+            transition:background var(--transition-fast),transform var(--transition-fast),border-color var(--transition-fast);
+        }
+        .back-to-top:hover{
+            background:var(--accent);color:#111;border-color:transparent;transform:translateY(-2px);
+        }
+
+        .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease-out,transform .7s ease-out;}
+        .reveal.visible{opacity:1;transform:translateY(0);}
+        @keyframes spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+        @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+
+        @media (max-width:960px){
+            .hero{grid-template-columns:minmax(0,1fr);}
+            .hero-visual{order:-1;}
+        }
+        @media (max-width:820px){
+            .header{padding-inline:1.4rem;}
+            .nav-toggle{display:flex;}
+            .nav-links{
+                position:absolute;top:100%;right:0;
+                background:rgba(3,5,16,.98);
+                border-radius:0 0 0 18px;
+                border-left:1px solid rgba(255,255,255,.08);
+                border-bottom:1px solid rgba(255,255,255,.08);
+                flex-direction:column;padding:.8rem 1.4rem 1rem;gap:.9rem;
+                transform-origin:top right;transform:scaleY(.4);
+                opacity:0;pointer-events:none;
+                transition:transform var(--transition-med),opacity var(--transition-med);
+            }
+            .nav-links.open{opacity:1;transform:scaleY(1);pointer-events:auto;}
+            .section,.hero{padding-inline:1.4rem;}
+            .about-layout,.contact-layout{grid-template-columns:minmax(0,1fr);}
+            .footer-main{align-items:flex-start;flex-direction:column;}
+        }
+        @media (max-width:600px){
+            .hero{padding-top:5.2rem;}
+            .hero-title{font-size:2.15rem;}
+            .floating-chip{display:none;}
+        }
+    </style>
+</head>
+<body>
+
+<header class="header" id="top">
+    <div class="logo-badge">
+        <span class="logo-main">Skill</span>
+        <span class="logo-mid">M@</span>
+        <span class="logo-end">X</span>
+    </div>
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="#home" class="nav-link active">Home</a></li>
+            <li><a href="#courses" class="nav-link">Courses</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="nav-toggle" id="navToggle">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+    <div class="hero-content">
+        <p class="hero-pill">Online Learning • Tech Skills</p>
+        <h1 class="hero-title">
+           -SkillM@X-  <span class="accent">Empower Your Skills</span> .
+        </h1>
+        <p class="hero-subtitle">
+            SkillM@X is a futuristic learning platform for Python, Machine Learning, Data Science,
+            Data Visualization, Artificial Intelligence, Generative AI, Web Development, and more.
+        </p>
+        <div class="hero-actions">
+            <a href="#courses" class="btn btn-primary">Explore Courses</a>
+            <a href="#about" class="btn btn-ghost">Why SkillM@X?</a>
+        </div>
+        <div class="hero-stats">
+            <div class="stat-card">
+                <span class="stat-number">Live</span>
+                <span class="stat-label">Virtual Classes</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">Futuristic Courses</span>
+                <span class="stat-label">Course Completion Certificate</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">Trusted</span>
+                <span class="stat-label">Learners worldwide</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="hero-visual">
+        <div class="holo-ring ring-outer"></div>
+        <div class="holo-ring ring-middle"></div>
+        <div class="holo-ring ring-inner"></div>
+
+        <div class="hero-node node-1">
+            <span class="node-label">Beginner to Advanced Python</span><span class="node-dot"></span>
+        </div>
+        <div class="hero-node node-2">
+            <span class="node-label">Machine Learning</span><span class="node-dot"></span>
+        </div>
+        <div class="hero-node node-3">
+            <span class="node-label">Data Science </span><span class="node-dot"></span>
+        </div>
+
+        <div class="floating-chip chip-1">
+            <i class="fa-solid fa-bolt"></i>Courses at Affordable Price
+        </div>
+        <div class="floating-chip chip-2">
+            <i class="fa-solid fa-infinity"></i>Virtual Interaction with Team
+        </div>
+    </div>
+</section>
+
+<section class="section" id="courses">
+    <div class="section-header">
+        <h2>Courses at SkillM@X</h2>
+        <p>Skills that Empowers your Career.Checkout our Courses </p>
+    </div>
+
+    <div class="course-grid">
+        <!-- Python -->
+        <article class="course-card">
+            <div class="course-image">
+                <img src="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Python code on screen">
+                <div class="course-chip">Beginner Friendly</div>
+                <div class="course-orb orb-1"></div>
+                <div class="course-icon-strip">
+                    <span class="course-icon"><i class="fa-solid fa-code"></i></span>
+                    <span class="course-icon"><i class="fa-solid fa-terminal"></i></span>
+                    <span class="course-icon"><i class="fa-solid fa-robot"></i></span>
+                </div>
+            </div>
+            <div class="course-body">
+                <h3>Python Programming</h3>
+                <p>Master Python fundamentals, problem-solving, and automation with hands-on coding challenges.</p>
+            </div>
+        </article>
+
+        <!-- Machine Learning -->
+        <article class="course-card">
+            <div class="course-image">
+                <img src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Machine learning visualization">
+                <div class="course-chip">Model Building</div>
+                <div class="course-orb orb-2"></div>
+                <div class="course-icon-strip">
+                    <span class="course-icon"><i class="fa-solid fa-brain"></i></span>
+                    <span class="course-icon"><i class="fa-solid fa-diagram-project"></i></span>
+                    <span class="course-icon"><i class="fa-solid fa-chart-line"></i></span>
+                </div>
+            </div>
+            <div class="course-body">
+                <h3>Machine Learning</h3>
+                <p>Learn supervised, unsupervised, and ensemble methods with practical datasets and evaluation.</p>
+            </div>
+        </article>
+
+        <!-- Data Science -->
+        <article class="course-card">
+            <div class="course-image">
+                <img src="https://images.pexels.com/photos/669610/pexels-photo-669610.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Data charts and dashboards">
+                <div class="course-chip">End-to-End</div>
+                <div class="course-orb orb-3"></div>
+                <div class="course-icon-strip">
+                    <span class="course-icon"><i class="fa-solid fa-database"></i></span>
+                    <span class="course-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></span>
+                    <span class="course-icon"><i class="fa-solid fa-layer-group"></i></span>
+                </div>
+            </div>
+            <div class="course-body">
+                <h3>Data Science</h3>
+                <p>Cover data cleaning, feature engineering, experimentation, and result communication.</p>
+            </div>
+        </article>
+
+        <!-- Data Visualization -->
+        <article class="course-card">
+            <div class="course-image">
+                <img src="https://images.pexels.com/photos/572056/pexels-photo-572056.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Colorful data visualization">
+                <div class="course-chip">Dashboards</div>
+                <div class="course-orb orb-4"></div>
+                <div class="course-icon-strip">
+                    <span class="course-icon"><i class="fa-solid fa-chart-pie"></i></span>
+                    <span class="course-icon"><i class="fa-solid fa-chart-bar"></i></span>
+                    <span class="course-icon"><i class="fa-solid fa-table"></i></span>
+                </div>
+            </div>
+            <div class="course-body">
+                <h3>Data Visualization</h3>
+                <p>Design modern charts and dashboards that turn data into compelling visual stories.</p>
+            </div>
+        </article>
+
+        <!-- Artificial Intelligence -->
+        <article class="course-card">
+            <div class="course-image">
+                <img src="https://images.pexels.com/photos/8386434/pexels-photo-8386434.jpeg?auto=compress&cs=tinysrgb&w=800" alt="AI circuit face">
+                <div class="course-chip">Deep Learning</div>
+                <div class="course-orb orb-5"></div>
+                <div class="course-icon-strip">
+                    <span class="course-icon"><i class="fa-solid fa-microchip"></i></span>
+                    <span class="course-icon"><i class="fa-solid fa-network-wired"></i></span>
+                    <span class="course-icon"><i class="fa-solid fa-wave-square"></i></span>
+                </div>
+            </div>
+            <div class="course-body">
+                <h3>Artificial Intelligence</h3>
+                <p>Explore neural networks, deep learning workflows, and intelligent applications.</p>
+            </div>
+        </article>
+
+        <!-- Generative AI -->
+        <article class="course-card">
+            <div class="course-image">
+                <img src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Generative AI art">
+                <div class="course-chip">Generative Models</div>
+                <div class="course-orb orb-7"></div>
+                <div class="course-icon-strip">
+                    <span class="course-icon"><i class="fa-solid fa-microchip"></i></span>
+                    <span class="course-icon"><i class="fa-solid fa-sparkles"></i></span>
+                    <span class="course-icon"><i class="fa-solid fa-image"></i></span>
+                </div>
+            </div>
+            <div class="course-body">
+                <h3>Generative AI</h3>
+                <p>Build with large language models and diffusion systems to generate code, text, and media.</p>
+            </div>
+        </article>
+
+        <!-- Web Development -->
+        <article class="course-card">
+            <div class="course-image">
+                <img src="https://images.pexels.com/photos/4974912/pexels-photo-4974912.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Web development screens">
+                <div class="course-chip">Full Stack</div>
+                <div class="course-orb orb-8"></div>
+                <div class="course-icon-strip">
+                    <span class="course-icon"><i class="fa-solid fa-globe"></i></span>
+                    <span class="course-icon"><i class="fa-solid fa-laptop-code"></i></span>
+                    <span class="course-icon"><i class="fa-solid fa-layer-group"></i></span>
+                </div>
+            </div>
+            <div class="course-body">
+                <h3>Web Development</h3>
+                <p>Create responsive, modern web applications from front end to back end deployment.</p>
+            </div>
+        </article>
+
+        <!-- More Courses -->
+        <article class="course-card">
+            <div class="course-image">
+                <img src="https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Cloud and code concept">
+                <div class="course-chip">Coming Soon</div>
+                <div class="course-orb orb-6"></div>
+                <div class="course-icon-strip">
+                    <span class="course-icon"><i class="fa-solid fa-cloud"></i></span>
+                    <span class="course-icon"><i class="fa-solid fa-gears"></i></span>
+                    <span class="course-icon"><i class="fa-solid fa-flask"></i></span>
+                </div>
+            </div>
+            <div class="course-body">
+                <h3>More Courses</h3>
+                <p>Advanced topics like MLOps, NLP, cloud, and specialized AI tracks are on the roadmap.</p>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="section section-alt" id="about">
+    <div class="section-header">
+        <h2>About SkillM@X</h2>
+        <p>SkillM@X is a Online Learning Platform.We provide Futuristic Courses,Where you can purchase and learn with us through Online Classes that We Provide throughout the course Completion ,and We provide Course Completion Certificates </p>
+    </div>
+    <div class="about-layout">
+        <div class="about-text">
+            <p>
+                SkillM@X is a private online learning company founded in December 2025 with a mission to help learners build strong careers through high-quality, accessible, and industry-relevant education.
+                At SkillM@X, learners can explore a wide range of courses and purchase them by simply contacting us through our website or social media platforms. We provide courses at affordable prices, making quality education accessible to everyone.
+                All classes are conducted online, through platform  Google Meet ensuring flexibility and convenience for learners across different regions. Each course is taught by our skilled, experienced, and student-friendly tutors who focus on clear communication, practical knowledge, and real-world applications.
+            </p>
+            <p>
+                Upon successful completion of any course, learners will receive a certificate, acknowledging their effort, dedication, and newly gained skills.
+
+Our vision is to create strong career opportunities for every student who learns with us. With SkillM@X, we aim to build a community where quality learning meets passion and growth.
+            </p>
+            <ul class="about-list">
+                <li><i class="fa-solid fa-check"></i>Career-Focused Learning.</li>
+                <li><i class="fa-solid fa-check"></i> Quality Training by Skilled Tutors.</li>
+                <li><i class="fa-solid fa-check"></i> Affordable & Accessible Education.</li>
+            </ul>
+        </div>
+        <div class="about-panels">
+            <div class="about-panel">
+                <span class="panel-label">Learning Experience</span>
+                <h3>Guided skill journeys</h3>
+                <p>SkillM@X helps you gain practical, industry-ready skills that strengthen your career and open new opportunities..</p>
+            </div>
+            <div class="about-panel">
+                <span class="panel-label">Virtual Classes</span>
+                <h3>Ready for classrooms</h3>
+                <p>Our experienced tutors make learning simple, interactive, and effective for every student.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="contact">
+    <div class="section-header">
+        <h2>Contact SkillM@X</h2>
+        <p>Have a query, partnership idea, or feedback? Reach out using the form or links.</p>
+    </div>
+    <div class="contact-layout">
+        <form class="contact-form" id="contactForm">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input id="name" type="text" placeholder="Your full name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" type="email" placeholder="you@example.com" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" rows="4" placeholder="How can SkillM@X help you?" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary full-width">Send Message</button>
+            <p class="form-status" id="formStatus"></p>
+        </form>
+
+        <div class="contact-direct">
+            <h3>Connect directly</h3>
+            <p>Choose any channel that works best for you to start a conversation.</p>
+            <div class="contact-links">
+                <a href="mailto:skillmaxlearn@gmail.com" class="contact-link" target="_blank">
+                    <span class="icon-circle email"><i class="fa-solid fa-envelope"></i></span>
+                    <div>
+                        <h4>Email</h4><span>skillmaxlearn@gmail.com</span>
+                    </div>
+                </a>
+                <a href="https://www.linkedin.com" class="contact-link" target="_blank">
+                    <span class="icon-circle linkedin"><i class="fa-brands fa-linkedin-in"></i></span>
+                    <div>
+                        <h4>LinkedIn</h4><span>/company/skillmax</span>
+                    </div>
+                </a>
+                <a href="https://wa.me/8156978231" class="contact-link" target="_blank">
+                    <span class="icon-circle whatsapp"><i class="fa-brands fa-whatsapp"></i></span>
+                    <div>
+                        <h4>WhatsApp</h4><span>8156978231</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footer-main">
+        <div class="footer-brand">
+            <div class="logo-badge small">
+                <span class="logo-main">Skill</span>
+                <span class="logo-mid">M@</span>
+                <span class="logo-end">X</span>
+            </div>
+            <span class="footer-name">SkillM@X</span>
+        </div>
+        <p class="footer-tagline">Empowering learners with focused, future-ready tech skills.</p>
+        <div class="footer-social">
+            <a href="mailto:skillmaxlearn@gmail.com" class="social-icon"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://www.linkedin.com" target="_blank" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://wa.me/8156978231" target="_blank" class="social-icon"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>© <span id="year"></span> SkillM@X. All rights reserved.</span>
+        <a href="#top" class="back-to-top"><i class="fa-solid fa-arrow-up"></i></a>
+    </div>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const navLinks = document.querySelectorAll(".nav-link");
+    const sections = document.querySelectorAll("section");
+    const navToggle = document.getElementById("navToggle");
+    const navList = document.querySelector(".nav-links");
+    const contactForm = document.getElementById("contactForm");
+    const formStatus = document.getElementById("formStatus");
+    const yearSpan = document.getElementById("year");
+
+    if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+
+    if (navToggle) {
+        navToggle.addEventListener("click", () => {
+            navList.classList.toggle("open");
+            navToggle.classList.toggle("open");
+        });
+    }
+    navLinks.forEach(link => {
+        link.addEventListener("click", () => {
+            navList.classList.remove("open");
+            navToggle.classList.remove("open");
+        });
+    });
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const id = entry.target.getAttribute("id");
+            navLinks.forEach(link => {
+                link.classList.toggle("active", link.getAttribute("href") === "#" + id);
+            });
+        });
+    }, { threshold: 0.3 });
+
+    sections.forEach(sec => sectionObserver.observe(sec));
+
+    const revealElements = [
+        ...document.querySelectorAll(".hero-content, .hero-visual, .course-card, .about-layout, .contact-layout")
+    ];
+    revealElements.forEach(el => el.classList.add("reveal"));
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    if (contactForm && formStatus) {
+        contactForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            formStatus.textContent = "Sending message...";
+            formStatus.style.color = "#ffe18a";
+            setTimeout(() => {
+                contactForm.reset();
+                formStatus.textContent = "Thank you! Your message has been registered. We will get back to you.";
+                formStatus.style.color = "#8bc34a";
+            }, 1000);
+        });
+    }
+});
+</script>
+</body>
+</html>
