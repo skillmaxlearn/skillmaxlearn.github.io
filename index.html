@@ -3,41 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkillM@X - Learn Future Skills</title>
+    <title>SkillM@X - Learn Future Skills | Python, AI, Data Science</title>
+    <meta name="description" content="SkillM@X is a futuristic online learning platform offering Python, Machine Learning, Data Science, AI, Generative AI, and Web Development courses with live virtual classes and certificates.">
+    <meta name="keywords" content="SkillMax, online learning, Python course, Data Science, Machine Learning, AI course, Generative AI, Web Development, Kerala, affordable courses">
+    <meta name="author" content="SkillM@X">
+    <meta property="og:title" content="SkillM@X — Learn Future Skills">
+    <meta property="og:description" content="Futuristic online courses in Python, AI, Data Science & more. Live classes. Affordable. Certified.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&cs=tinysrgb&w=800">
 
-    <!-- Google Font & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
-        :root {
-            --primary: #326acb;
-            --primary-dark: #214b8f;
-            --primary-light: #4d82e6;
-            --accent: #f4b000;
-            --accent-soft: #ffe18a;
-            --bg: #050816;
-            --bg-alt: #0b1535;
-            --text-main: #f5f7ff;
-            --text-muted: #a7b0d9;
-            --radius-lg: 18px;
-            --radius-md: 12px;
-            --radius-full: 999px;
-            --shadow-soft: 0 18px 40px rgba(0,0,0,0.45);
-            --shadow-glow: 0 0 24px rgba(244,176,0,0.65);
-            --transition-fast: 0.2s ease-out;
-            --transition-med: 0.35s ease-out;
-        }
+        :root{--primary:#326acb;--primary-dark:#214b8f;--primary-light:#4d82e6;--accent:#f4b000;--accent-soft:#ffe18a;--bg:#050816;--bg-alt:#0b1535;--text-main:#f5f7ff;--text-muted:#a7b0d9;--radius-lg:18px;--radius-md:12px;--radius-full:999px;--shadow-soft:0 18px 40px rgba(0,0,0,0.45);--shadow-glow:0 0 24px rgba(244,176,0,0.65);--transition-fast:0.2s ease-out;--transition-med:0.35s ease-out;}
         *,*::before,*::after{box-sizing:border-box;}
         html{scroll-behavior:smooth;}
-        body{
-            margin:0;
-            font-family:"Poppins",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
-            background:radial-gradient(circle at top,#12265f 0,#050816 60%,#02020a 100%);
-            color:var(--text-main);
-            line-height:1.6;
-            overflow-x:hidden;
-        }
+        body{margin:0;font-family:"Poppins",system-ui,sans-serif;background:radial-gradient(circle at top,#12265f 0,#050816 60%,#02020a 100%);color:var(--text-main);line-height:1.6;overflow-x:hidden;}
         a{text-decoration:none;color:inherit;}
         ul{list-style:none;margin:0;padding:0;}
         .section{padding:6rem min(8vw,5rem);position:relative;z-index:1;}
@@ -46,184 +28,101 @@
         .section-header h2{font-size:clamp(2.1rem,2.5vw,2.6rem);margin-bottom:.7rem;}
         .section-header p{color:var(--text-muted);font-size:.98rem;}
 
+        /* SCROLL PROGRESS */
+        #scroll-progress{position:fixed;top:0;left:0;height:3px;width:0%;z-index:999;background:linear-gradient(90deg,var(--primary-light),var(--accent),#ffcf3a);box-shadow:0 0 10px rgba(244,176,0,.7);transition:width .1s linear;}
+
+        /* PARTICLE */
+        #particle-canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.4;}
+
         /* HEADER */
-        .header{
-            position:sticky;top:0;z-index:40;
-            padding:.7rem min(8vw,5rem);
-            display:flex;justify-content:space-between;align-items:center;
-            backdrop-filter:blur(18px);
-            background:linear-gradient(to bottom,rgba(5,8,22,.96),rgba(5,8,22,.7));
-            border-bottom:1px solid rgba(255,255,255,.06);
-        }
-        .logo-badge{
-            display:inline-flex;align-items:center;justify-content:center;
-            padding:.35rem .9rem;border-radius:999px;
-            background:radial-gradient(circle at 30% 0,#4d82e6,#214b8f 60%,#050816 100%);
-            box-shadow:var(--shadow-glow);gap:.12rem;
-            font-weight:700;letter-spacing:.03em;
-        }
+        .header{position:sticky;top:0;z-index:40;padding:.7rem min(8vw,5rem);display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(18px);background:linear-gradient(to bottom,rgba(5,8,22,.96),rgba(5,8,22,.7));border-bottom:1px solid rgba(255,255,255,.06);}
+        .logo-badge{display:inline-flex;align-items:center;justify-content:center;padding:.35rem .9rem;border-radius:999px;background:radial-gradient(circle at 30% 0,#4d82e6,#214b8f 60%,#050816 100%);box-shadow:var(--shadow-glow);gap:.12rem;font-weight:700;letter-spacing:.03em;transition:box-shadow .3s;}
+        .logo-badge:hover{box-shadow:0 0 32px rgba(244,176,0,.9);}
         .logo-badge.small{padding:.2rem .6rem;font-size:.85rem;}
-        .logo-main{color:#fff;}
-        .logo-mid,.logo-end{color:var(--accent);}
-        .navbar{display:flex;align-items:center;}
+        .logo-main{color:#fff;}.logo-mid,.logo-end{color:var(--accent);}
+        .navbar{display:flex;align-items:center;gap:.8rem;}
         .nav-links{display:flex;gap:1.6rem;}
-        .nav-link{
-            position:relative;font-size:.95rem;color:var(--text-muted);
-            transition:color var(--transition-fast);
-        }
-        .nav-link::after{
-            content:"";position:absolute;left:0;bottom:-.3rem;width:0;height:2px;
-            border-radius:999px;
-            background:linear-gradient(90deg,var(--accent),var(--primary-light));
-            transition:width var(--transition-med);
-        }
+        .nav-link{position:relative;font-size:.95rem;color:var(--text-muted);transition:color var(--transition-fast);}
+        .nav-link::after{content:"";position:absolute;left:0;bottom:-.3rem;width:0;height:2px;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--primary-light));transition:width var(--transition-med);}
         .nav-link:hover,.nav-link.active{color:var(--text-main);}
         .nav-link:hover::after,.nav-link.active::after{width:100%;}
-        .nav-toggle{
-            display:none;width:28px;height:22px;
-            flex-direction:column;justify-content:space-between;
-            margin-left:1rem;cursor:pointer;
-        }
-        .nav-toggle span{
-            height:3px;border-radius:999px;
-            background:var(--text-main);
-            transition:transform var(--transition-fast),opacity var(--transition-fast);
-        }
+        .nav-toggle{display:none;width:28px;height:22px;flex-direction:column;justify-content:space-between;margin-left:.5rem;cursor:pointer;}
+        .nav-toggle span{height:3px;border-radius:999px;background:var(--text-main);transition:transform var(--transition-fast),opacity var(--transition-fast);}
+        .nav-toggle.open span:nth-child(1){transform:translateY(9.5px) rotate(45deg);}
+        .nav-toggle.open span:nth-child(2){opacity:0;}
+        .nav-toggle.open span:nth-child(3){transform:translateY(-9.5px) rotate(-45deg);}
 
         /* HERO */
-        .hero{
-            padding:6.5rem min(8vw,5rem) 5rem;
-            display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);
-            gap:3.5rem;align-items:center;position:relative;
-        }
-        .hero::before{
-            content:"";position:absolute;inset:0;
-            background:
-                radial-gradient(circle at 10% 0,rgba(77,130,230,.4),transparent 55%),
-                radial-gradient(circle at 90% 20,rgba(244,176,0,.22),transparent 55%);
-            pointer-events:none;
-        }
+        .hero{padding:6.5rem min(8vw,5rem) 5rem;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:3.5rem;align-items:center;position:relative;z-index:1;}
+        .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 10% 0,rgba(77,130,230,.4),transparent 55%),radial-gradient(circle at 90% 20%,rgba(244,176,0,.22),transparent 55%);pointer-events:none;}
         .hero-content{position:relative;z-index:1;}
-        .hero-pill{
-            display:inline-flex;align-items:center;gap:.4rem;
-            padding:.25rem .9rem;border-radius:999px;
-            border:1px solid rgba(255,255,255,.22);
-            color:var(--accent-soft);font-size:.75rem;
-            margin-bottom:.8rem;background:rgba(5,8,22,.6);
-        }
-        .hero-title{font-size:clamp(2.6rem,4vw,3.4rem);line-height:1.1;margin:0 0 1rem;}
+        .hero-pill{display:inline-flex;align-items:center;gap:.4rem;padding:.25rem .9rem;border-radius:999px;border:1px solid rgba(255,255,255,.22);color:var(--accent-soft);font-size:.75rem;margin-bottom:.8rem;background:rgba(5,8,22,.6);animation:fadeSlideDown .8s ease-out both;}
+        .hero-title{font-size:clamp(2.6rem,4vw,3.4rem);line-height:1.1;margin:0 0 1rem;animation:fadeSlideUp .9s ease-out .1s both;}
         .hero-title .accent{color:var(--accent);}
-        .hero-subtitle{color:var(--text-muted);font-size:.98rem;max-width:520px;margin-bottom:1.8rem;}
-        .hero-actions{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:2rem;}
-        .btn{
-            border-radius:var(--radius-full);padding:.8rem 1.6rem;border:none;
-            font-size:.94rem;font-weight:500;cursor:pointer;
-            display:inline-flex;align-items:center;justify-content:center;
-            letter-spacing:.03em;
-            transition:background var(--transition-med),color var(--transition-med),
-                transform var(--transition-fast),box-shadow var(--transition-fast),
-                border-color var(--transition-fast);
-        }
-        .btn-primary{
-            background:linear-gradient(135deg,var(--accent),#ffcf3a);
-            color:#1b1b1b;box-shadow:var(--shadow-glow);
-        }
-        .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(244,176,0,.7);}
-        .btn-ghost{
-            background:transparent;color:var(--text-main);
-            border:1px solid rgba(255,255,255,.22);
-        }
-        .btn-ghost:hover{border-color:var(--accent);background:rgba(255,255,255,.03);}
+        .hero-title .glow-text{text-shadow:0 0 20px rgba(244,176,0,.5),0 0 40px rgba(244,176,0,.3);}
+        .hero-subtitle{color:var(--text-muted);font-size:.98rem;max-width:520px;margin-bottom:1.8rem;animation:fadeSlideUp .9s ease-out .2s both;}
+        .hero-actions{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:2rem;animation:fadeSlideUp .9s ease-out .3s both;}
+        .btn{border-radius:var(--radius-full);padding:.8rem 1.6rem;border:none;font-size:.94rem;font-weight:500;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;letter-spacing:.03em;transition:background var(--transition-med),color var(--transition-med),transform var(--transition-fast),box-shadow var(--transition-fast),border-color var(--transition-fast);}
+        .btn-primary{background:linear-gradient(135deg,var(--accent),#ffcf3a);color:#1b1b1b;box-shadow:var(--shadow-glow);}
+        .btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(244,176,0,.75);}
+        .btn-ghost{background:transparent;color:var(--text-main);border:1px solid rgba(255,255,255,.22);}
+        .btn-ghost:hover{border-color:var(--accent);background:rgba(255,255,255,.04);transform:translateY(-2px);}
         .full-width{width:100%;}
-        .hero-stats{display:flex;flex-wrap:wrap;gap:1rem;}
-        .stat-card{
-            background:linear-gradient(145deg,rgba(50,106,203,.9),rgba(5,8,22,.95));
-            border-radius:var(--radius-md);padding:.8rem 1.1rem;
-            border:1px solid rgba(255,255,255,.1);box-shadow:0 14px 30px rgba(0,0,0,.4);
-            min-width:120px;
-        }
-        .stat-number{display:block;font-weight:600;font-size:1.1rem;}
+        .hero-stats{display:flex;flex-wrap:wrap;gap:1rem;animation:fadeSlideUp .9s ease-out .4s both;}
+        .stat-card{background:linear-gradient(145deg,rgba(50,106,203,.9),rgba(5,8,22,.95));border-radius:var(--radius-md);padding:.8rem 1.1rem;border:1px solid rgba(255,255,255,.1);box-shadow:0 14px 30px rgba(0,0,0,.4);min-width:120px;transition:transform var(--transition-fast),box-shadow var(--transition-fast);}
+        .stat-card:hover{transform:translateY(-3px);box-shadow:0 20px 40px rgba(0,0,0,.6);}
+        .stat-number{display:block;font-weight:700;font-size:1.2rem;color:var(--accent);}
         .stat-label{display:block;font-size:.75rem;color:var(--text-muted);}
-
-        .hero-visual{position:relative;min-height:260px;display:flex;align-items:center;justify-content:center;}
-        .holo-ring{
-            position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.25);
-            box-shadow:0 18px 45px rgba(0,0,0,.7);animation:spin 26s linear infinite;
-        }
+        .hero-visual{position:relative;min-height:260px;display:flex;align-items:center;justify-content:center;animation:fadeIn 1.2s ease-out .3s both;}
+        .holo-ring{position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.25);box-shadow:0 18px 45px rgba(0,0,0,.7);animation:spin 26s linear infinite;}
         .ring-outer{width:260px;height:260px;border-color:rgba(244,176,0,.4);}
         .ring-middle{width:200px;height:200px;border-color:rgba(77,130,230,.8);animation-duration:22s;animation-direction:reverse;}
         .ring-inner{width:140px;height:140px;border-color:rgba(255,255,255,.4);animation-duration:30s;}
-        .hero-node{
-            position:absolute;display:flex;align-items:center;gap:.5rem;
-            font-size:.8rem;padding:.4rem .65rem;border-radius:999px;
-            background:rgba(5,8,22,.9);border:1px solid rgba(255,255,255,.24);
-            box-shadow:var(--shadow-soft);
-        }
-        .node-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent);}
-        .node-1{top:12%;right:6%;}
-        .node-2{bottom:8%;left:10%;}
-        .node-3{bottom:20%;right:16%;}
-        .floating-chip{
-            position:absolute;display:inline-flex;align-items:center;gap:.35rem;
-            padding:.5rem .85rem;border-radius:999px;
-            background:rgba(5,8,22,.96);border:1px solid rgba(255,255,255,.22);
-            font-size:.8rem;box-shadow:var(--shadow-soft);
-        }
+        .hero-node{position:absolute;display:flex;align-items:center;gap:.5rem;font-size:.8rem;padding:.4rem .65rem;border-radius:999px;background:rgba(5,8,22,.9);border:1px solid rgba(255,255,255,.24);box-shadow:var(--shadow-soft);}
+        .node-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent);animation:nodePulse 2s ease-in-out infinite;}
+        .node-1{top:12%;right:6%;}.node-2{bottom:8%;left:10%;}.node-3{bottom:20%;right:16%;}
+        .floating-chip{position:absolute;display:inline-flex;align-items:center;gap:.35rem;padding:.5rem .85rem;border-radius:999px;background:rgba(5,8,22,.96);border:1px solid rgba(255,255,255,.22);font-size:.8rem;box-shadow:var(--shadow-soft);}
         .floating-chip i{color:var(--accent-soft);}
         .chip-1{top:0;left:5%;animation:float 6s ease-in-out infinite;}
         .chip-2{bottom:0;right:2%;animation:float 7s ease-in-out infinite .7s;}
 
+        /* STATS COUNTER BAR */
+        .stats-section{padding:4rem min(8vw,5rem);background:linear-gradient(135deg,rgba(50,106,203,.12),rgba(5,8,22,.98));border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);position:relative;z-index:1;}
+        .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:2rem;text-align:center;}
+        .counter-card{position:relative;}
+        .counter-number{font-size:clamp(2rem,3.5vw,2.8rem);font-weight:700;color:var(--accent);display:block;line-height:1;margin-bottom:.3rem;}
+        .counter-label{color:var(--text-muted);font-size:.88rem;}
+        .counter-icon{display:block;font-size:1.6rem;margin-bottom:.6rem;color:var(--primary-light);}
+
+        /* HOW IT WORKS */
+        .steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem;position:relative;}
+        .steps-grid::before{content:"";position:absolute;top:48px;left:15%;right:15%;height:2px;background:linear-gradient(90deg,transparent,var(--primary-light),var(--accent),transparent);z-index:0;}
+        .step-card{background:linear-gradient(155deg,rgba(15,25,70,.96),rgba(5,8,22,.98));border-radius:var(--radius-lg);padding:2rem 1.5rem 1.8rem;border:1px solid rgba(255,255,255,.08);text-align:center;position:relative;z-index:1;transition:transform var(--transition-med),border-color var(--transition-med),box-shadow var(--transition-med);}
+        .step-card:hover{transform:translateY(-6px);border-color:rgba(244,176,0,.4);box-shadow:0 20px 50px rgba(0,0,0,.6);}
+        .step-number{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#ffcf3a);color:#1b1b1b;font-weight:700;font-size:1.2rem;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;box-shadow:var(--shadow-glow);}
+        .step-card h3{margin:0 0 .5rem;font-size:1.05rem;}
+        .step-card p{color:var(--text-muted);font-size:.88rem;margin:0;}
+
+        /* COURSE FILTER */
+        .course-filter{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin-bottom:2.2rem;}
+        .filter-btn{padding:.4rem 1rem;border-radius:999px;border:1px solid rgba(255,255,255,.15);background:transparent;color:var(--text-muted);font-family:inherit;font-size:.82rem;cursor:pointer;transition:all var(--transition-fast);}
+        .filter-btn:hover,.filter-btn.active{background:linear-gradient(135deg,var(--accent),#ffcf3a);color:#1b1b1b;border-color:transparent;box-shadow:0 4px 16px rgba(244,176,0,.4);}
+
         /* COURSES */
         .course-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2rem;}
-        .course-card{
-            background:linear-gradient(155deg,rgba(15,25,70,.96),rgba(5,8,22,.98));
-            border-radius:var(--radius-lg);overflow:hidden;
-            border:1px solid rgba(255,255,255,.08);
-            box-shadow:0 16px 40px rgba(0,0,0,.6);
-            transition:transform var(--transition-med),box-shadow var(--transition-med),border-color var(--transition-med);
-            position:relative;
-        }
-        .course-card::before{
-            content:"";position:absolute;inset:0;
-            background:radial-gradient(circle at top right,rgba(244,176,0,.25),transparent 60%);
-            opacity:0;transition:opacity var(--transition-med);
-        }
-        .course-card:hover{
-            transform:translateY(-8px) scale(1.01);
-            box-shadow:0 20px 60px rgba(0,0,0,.8);
-            border-color:rgba(244,176,0,.55);
-        }
+        .course-card{background:linear-gradient(155deg,rgba(15,25,70,.96),rgba(5,8,22,.98));border-radius:var(--radius-lg);overflow:hidden;border:1px solid rgba(255,255,255,.08);box-shadow:0 16px 40px rgba(0,0,0,.6);transition:transform var(--transition-med),box-shadow var(--transition-med),border-color var(--transition-med);position:relative;cursor:pointer;}
+        .course-card::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at top right,rgba(244,176,0,.25),transparent 60%);opacity:0;transition:opacity var(--transition-med);}
+        .course-card:hover{transform:translateY(-8px) scale(1.01);box-shadow:0 24px 64px rgba(0,0,0,.8);border-color:rgba(244,176,0,.55);}
         .course-card:hover::before{opacity:1;}
-
-        .course-image{
-            position:relative;
-            height:180px;
-            overflow:hidden;
-        }
-        .course-image img{
-            width:100%;
-            height:100%;
-            object-fit:cover;
-            display:block;
-            filter:saturate(1.3) contrast(1.05);
-        }
-        .course-image::after{
-            content:"";
-            position:absolute;
-            inset:0;
-            background:linear-gradient(to bottom,rgba(5,8,22,0.1),rgba(5,8,22,0.75));
-        }
-        .course-chip{
-            position:absolute;top:12px;left:14px;
-            background:rgba(5,8,22,.9);padding:.25rem .7rem;
-            border-radius:999px;font-size:.7rem;
-            border:1px solid rgba(255,255,255,.2);
-            z-index:2;
-        }
-        .course-orb{
-            position:absolute;width:90px;height:90px;border-radius:50%;
-            filter:blur(4px);opacity:.75;mix-blend-mode:screen;z-index:1;
-        }
+        .course-card[data-hidden="true"]{display:none;}
+        .click-hint{position:absolute;bottom:14px;right:14px;display:flex;align-items:center;gap:.3rem;font-size:.7rem;color:var(--accent-soft);opacity:0;transition:opacity var(--transition-med);z-index:3;pointer-events:none;}
+        .course-card:hover .click-hint{opacity:1;}
+        .course-image{position:relative;height:180px;overflow:hidden;}
+        .course-image img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.3) contrast(1.05);transition:transform .5s ease-out;}
+        .course-card:hover .course-image img{transform:scale(1.06);}
+        .course-image::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(5,8,22,0.1),rgba(5,8,22,0.75));}
+        .course-chip{position:absolute;top:12px;left:14px;background:rgba(5,8,22,.9);padding:.25rem .7rem;border-radius:999px;font-size:.7rem;border:1px solid rgba(255,255,255,.2);z-index:2;}
+        .course-orb{position:absolute;width:90px;height:90px;border-radius:50%;filter:blur(4px);opacity:.75;mix-blend-mode:screen;z-index:1;}
         .orb-1{background:radial-gradient(circle,#ffd54f,transparent 70%);top:30%;left:55%;}
         .orb-2{background:radial-gradient(circle,#4dd0e1,transparent 70%);top:30%;left:20%;}
         .orb-3{background:radial-gradient(circle,#ff8a65,transparent 70%);top:30%;left:45%;}
@@ -232,40 +131,35 @@
         .orb-6{background:radial-gradient(circle,#90caf9,transparent 70%);top:30%;left:35%;}
         .orb-7{background:radial-gradient(circle,#ff80ff,transparent 70%);top:32%;left:50%;}
         .orb-8{background:radial-gradient(circle,#64b5f6,transparent 70%);top:32%;left:25%;}
-
-        /* Futuristic icon strip as overlay */
-        .course-icon-strip{
-            position:absolute;
-            bottom:10px;
-            left:50%;
-            transform:translateX(-50%);
-            display:flex;
-            gap:0.4rem;
-            padding:0.25rem 0.6rem;
-            border-radius:999px;
-            background:rgba(5,8,22,0.9);
-            border:1px solid rgba(255,255,255,0.25);
-            font-size:0.75rem;
-            z-index:2;
-        }
-        .course-icon{
-            width:22px;
-            height:22px;
-            border-radius:50%;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            background:rgba(255,255,255,0.06);
-            color:#fff;
-        }
-        .course-card:hover .course-icon{
-            background:rgba(244,176,0,0.28);
-            color:var(--accent-soft);
-        }
-
-        .course-body{padding:1.3rem 1.3rem 1.4rem;}
+        .course-icon-strip{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:.4rem;padding:.25rem .6rem;border-radius:999px;background:rgba(5,8,22,0.9);border:1px solid rgba(255,255,255,0.25);font-size:.75rem;z-index:2;}
+        .course-icon{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.06);color:#fff;transition:background var(--transition-fast),color var(--transition-fast);}
+        .course-card:hover .course-icon{background:rgba(244,176,0,.28);color:var(--accent-soft);}
+        .course-body{padding:1.3rem 1.3rem 2.2rem;}
         .course-body h3{margin:0 0 .4rem;}
-        .course-body p{margin:0 0 1.1rem;font-size:.9rem;color:var(--text-muted);}
+        .course-body p{margin:0;font-size:.9rem;color:var(--text-muted);}
+
+        /* COURSE DETAIL */
+        #course-detail-section{display:none;padding:6rem min(8vw,5rem);position:relative;z-index:1;min-height:80vh;}
+        #course-detail-section.active{display:block;}
+        .detail-back-btn{display:inline-flex;align-items:center;gap:.5rem;margin-bottom:2rem;background:transparent;color:var(--text-muted);border:1px solid rgba(255,255,255,.18);border-radius:var(--radius-full);padding:.5rem 1.1rem;font-size:.88rem;cursor:pointer;font-family:inherit;transition:color var(--transition-fast),border-color var(--transition-fast),background var(--transition-fast);}
+        .detail-back-btn:hover{color:var(--text-main);border-color:var(--accent);background:rgba(244,176,0,.06);}
+        .detail-card{background:linear-gradient(155deg,rgba(15,25,70,.96),rgba(5,8,22,.99));border-radius:var(--radius-lg);border:1px solid rgba(255,255,255,.1);box-shadow:0 24px 60px rgba(0,0,0,.7);overflow:hidden;max-width:860px;margin:0 auto;animation:detailFadeIn .4s ease-out;}
+        .detail-hero-img{position:relative;height:220px;overflow:hidden;}
+        .detail-hero-img img{width:100%;height:100%;object-fit:cover;filter:saturate(1.2) contrast(1.05);}
+        .detail-hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(5,8,22,.05),rgba(5,8,22,.8));}
+        .detail-hero-chip{position:absolute;top:14px;left:16px;z-index:2;background:rgba(5,8,22,.9);padding:.28rem .8rem;border-radius:999px;font-size:.72rem;border:1px solid rgba(255,255,255,.22);}
+        .detail-body{padding:2rem 2.2rem 2.4rem;}
+        .detail-body h2{font-size:clamp(1.6rem,2.5vw,2rem);margin:0 0 .6rem;}
+        .detail-description{color:var(--text-muted);font-size:.95rem;margin:0 0 1.8rem;line-height:1.7;}
+        .detail-meta{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:1.8rem;}
+        .detail-meta-item{display:flex;align-items:center;gap:.5rem;background:rgba(50,106,203,.15);border:1px solid rgba(77,130,230,.25);border-radius:var(--radius-md);padding:.55rem 1rem;font-size:.85rem;}
+        .detail-meta-item i{color:var(--accent);font-size:.85rem;}
+        .detail-skills-label{font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent-soft);margin-bottom:.7rem;}
+        .detail-skills{display:flex;flex-wrap:wrap;gap:.55rem;margin-bottom:2rem;}
+        .skill-tag{background:rgba(77,130,230,.15);border:1px solid rgba(77,130,230,.3);border-radius:999px;padding:.3rem .85rem;font-size:.8rem;color:var(--text-main);transition:background var(--transition-fast),border-color var(--transition-fast);}
+        .skill-tag:hover{background:rgba(244,176,0,.18);border-color:rgba(244,176,0,.5);}
+        .detail-enroll-btn{display:inline-flex;align-items:center;gap:.6rem;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;border:none;border-radius:var(--radius-full);padding:.85rem 2rem;font-size:.95rem;font-weight:600;cursor:pointer;font-family:inherit;letter-spacing:.02em;box-shadow:0 8px 28px rgba(37,211,102,.4);transition:transform var(--transition-fast),box-shadow var(--transition-fast);text-decoration:none;}
+        .detail-enroll-btn:hover{transform:translateY(-2px);box-shadow:0 14px 38px rgba(37,211,102,.55);}
 
         /* ABOUT */
         .about-layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:2.5rem;align-items:flex-start;}
@@ -273,457 +167,373 @@
         .about-list{margin-top:1.3rem;display:grid;gap:.55rem;font-size:.9rem;}
         .about-list li{display:flex;align-items:center;gap:.5rem;}
         .about-list i{color:var(--accent);}
+        .skill-bars{margin-top:1.6rem;}
+        .skill-bar-item{margin-bottom:1rem;}
+        .skill-bar-label{display:flex;justify-content:space-between;font-size:.82rem;margin-bottom:.3rem;}
+        .skill-bar-label span:last-child{color:var(--accent);}
+        .skill-bar-track{height:6px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden;}
+        .skill-bar-fill{height:100%;border-radius:999px;width:0;background:linear-gradient(90deg,var(--primary-light),var(--accent));transition:width 1.4s cubic-bezier(.4,0,.2,1);}
         .about-panels{display:grid;gap:1rem;}
-        .about-panel{
-            background:radial-gradient(circle at top,rgba(77,130,230,.4),rgba(5,8,22,.95));
-            border-radius:var(--radius-md);padding:1.1rem 1.2rem;
-            border:1px solid rgba(255,255,255,.1);position:relative;overflow:hidden;
-        }
-        .about-panel::after{
-            content:"";position:absolute;inset:0;
-            background:radial-gradient(circle at top right,rgba(244,176,0,.45),transparent 60%);
-            opacity:.4;pointer-events:none;
-        }
-        .panel-label{
-            font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;
-            color:var(--accent-soft);
-        }
+        .about-panel{background:radial-gradient(circle at top,rgba(77,130,230,.4),rgba(5,8,22,.95));border-radius:var(--radius-md);padding:1.1rem 1.2rem;border:1px solid rgba(255,255,255,.1);position:relative;overflow:hidden;transition:transform var(--transition-med),border-color var(--transition-med);}
+        .about-panel:hover{transform:translateY(-4px);border-color:rgba(244,176,0,.3);}
+        .about-panel::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at top right,rgba(244,176,0,.45),transparent 60%);opacity:.4;pointer-events:none;}
+        .panel-label{font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:var(--accent-soft);}
         .about-panel h3{margin:.3rem 0 .3rem;}
+
+        /* TESTIMONIALS */
+        .testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.8rem;}
+        .testimonial-card{background:linear-gradient(155deg,rgba(15,25,70,.96),rgba(5,8,22,.98));border-radius:var(--radius-lg);padding:1.6rem;border:1px solid rgba(255,255,255,.08);box-shadow:0 14px 36px rgba(0,0,0,.5);transition:transform var(--transition-med),border-color var(--transition-med);position:relative;}
+        .testimonial-card:hover{transform:translateY(-5px);border-color:rgba(244,176,0,.3);}
+        .testimonial-card::before{content:"\201C";position:absolute;top:.8rem;right:1.2rem;font-size:4rem;color:rgba(244,176,0,.15);line-height:1;font-family:Georgia,serif;}
+        .stars{color:var(--accent);font-size:.85rem;margin-bottom:.8rem;letter-spacing:.1em;}
+        .testimonial-text{color:var(--text-muted);font-size:.9rem;margin:0 0 1.2rem;font-style:italic;line-height:1.7;}
+        .testimonial-author{display:flex;align-items:center;gap:.75rem;}
+        .author-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--primary-light),var(--accent));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;color:#1b1b1b;flex-shrink:0;}
+        .author-name{font-size:.88rem;font-weight:600;}
+        .author-course{font-size:.76rem;color:var(--text-muted);}
+
+        /* PRICING */
+        .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2rem;max-width:900px;margin:0 auto;}
+        .pricing-card{background:linear-gradient(155deg,rgba(15,25,70,.96),rgba(5,8,22,.98));border-radius:var(--radius-lg);padding:2rem 1.8rem 2.2rem;border:1px solid rgba(255,255,255,.08);box-shadow:0 16px 40px rgba(0,0,0,.6);text-align:center;position:relative;transition:transform var(--transition-med),border-color var(--transition-med),box-shadow var(--transition-med);}
+        .pricing-card:hover{transform:translateY(-8px);box-shadow:0 24px 60px rgba(0,0,0,.8);}
+        .pricing-card.featured{border-color:rgba(244,176,0,.5);background:linear-gradient(155deg,rgba(50,106,203,.22),rgba(5,8,22,.98));}
+        .pricing-card.featured::before{content:"Most Popular";position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--accent),#ffcf3a);color:#1b1b1b;font-size:.72rem;font-weight:700;padding:.25rem .9rem;border-radius:999px;white-space:nowrap;}
+        .pricing-tier{font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent-soft);margin-bottom:.5rem;}
+        .pricing-price{font-size:clamp(1.6rem,2.5vw,2.2rem);font-weight:700;color:var(--text-main);margin:.4rem 0 .2rem;}
+        .pricing-price span{font-size:.88rem;font-weight:400;color:var(--text-muted);}
+        .pricing-desc{font-size:.83rem;color:var(--text-muted);margin-bottom:1.4rem;}
+        .pricing-features{text-align:left;margin-bottom:1.8rem;display:grid;gap:.6rem;}
+        .pricing-features li{display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:var(--text-muted);}
+        .pricing-features li i{color:var(--accent);font-size:.8rem;flex-shrink:0;}
+        .pricing-btn{display:flex;align-items:center;justify-content:center;gap:.5rem;width:100%;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;border:none;border-radius:var(--radius-full);padding:.8rem 1.4rem;font-size:.9rem;font-weight:600;cursor:pointer;font-family:inherit;box-shadow:0 6px 22px rgba(37,211,102,.35);transition:transform var(--transition-fast),box-shadow var(--transition-fast);text-decoration:none;}
+        .pricing-btn:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(37,211,102,.5);}
+
+        /* FAQ */
+        .faq-list{max-width:760px;margin:0 auto;display:grid;gap:.8rem;}
+        .faq-item{background:linear-gradient(155deg,rgba(15,25,70,.96),rgba(5,8,22,.98));border-radius:var(--radius-md);border:1px solid rgba(255,255,255,.08);overflow:hidden;}
+        .faq-question{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 1.4rem;cursor:pointer;font-size:.95rem;font-weight:500;transition:color var(--transition-fast);user-select:none;}
+        .faq-question:hover{color:var(--accent);}
+        .faq-icon{width:24px;height:24px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:.7rem;flex-shrink:0;margin-left:1rem;transition:transform var(--transition-med),background var(--transition-fast),border-color var(--transition-fast);}
+        .faq-item.open .faq-icon{transform:rotate(45deg);background:var(--accent);border-color:var(--accent);color:#1b1b1b;}
+        .faq-answer{max-height:0;overflow:hidden;transition:max-height .4s ease-out,padding .3s ease-out;font-size:.9rem;color:var(--text-muted);line-height:1.7;}
+        .faq-item.open .faq-answer{max-height:300px;padding:0 1.4rem 1.2rem;}
 
         /* CONTACT */
         .contact-layout{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:2.5rem;align-items:flex-start;}
-        .contact-form{
-            background:rgba(5,8,22,.98);border-radius:var(--radius-lg);
-            padding:1.6rem 1.6rem 1.8rem;
-            border:1px solid rgba(255,255,255,.12);
-            box-shadow:0 16px 40px rgba(0,0,0,.7);
-        }
+        .contact-form{background:rgba(5,8,22,.98);border-radius:var(--radius-lg);padding:1.6rem 1.6rem 1.8rem;border:1px solid rgba(255,255,255,.12);box-shadow:0 16px 40px rgba(0,0,0,.7);}
         .form-group{margin-bottom:1rem;}
         label{display:block;margin-bottom:.3rem;font-size:.84rem;color:var(--text-muted);}
-        input,textarea{
-            width:100%;border-radius:10px;border:1px solid rgba(255,255,255,.14);
-            background:rgba(8,13,40,.95);color:var(--text-main);
-            padding:.6rem .75rem;font-family:inherit;font-size:.9rem;
-            outline:none;transition:border-color var(--transition-fast),box-shadow var(--transition-fast),background var(--transition-fast);
-        }
-        input:focus,textarea:focus{
-            border-color:var(--accent);
-            box-shadow:0 0 0 1px rgba(244,176,0,.4);
-            background:rgba(8,13,40,1);
-        }
+        input,textarea{width:100%;border-radius:10px;border:1px solid rgba(255,255,255,.14);background:rgba(8,13,40,.95);color:var(--text-main);padding:.6rem .75rem;font-family:inherit;font-size:.9rem;outline:none;transition:border-color var(--transition-fast),box-shadow var(--transition-fast),background var(--transition-fast);}
+        input:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 1px rgba(244,176,0,.4);background:rgba(8,13,40,1);}
         textarea{resize:vertical;min-height:120px;}
         .form-status{margin-top:.6rem;font-size:.82rem;color:var(--accent-soft);}
         .contact-direct p{color:var(--text-muted);font-size:.92rem;}
         .contact-links{margin-top:1.2rem;display:grid;gap:.7rem;}
-        .contact-link{
-            display:flex;align-items:center;gap:.75rem;
-            padding:.65rem .85rem;border-radius:var(--radius-md);
-            border:1px solid rgba(255,255,255,.08);
-            background:rgba(5,8,22,.7);
-            transition:transform var(--transition-fast),border-color var(--transition-fast),background var(--transition-fast);
-        }
-        .contact-link:hover{
-            transform:translateY(-2px);
-            border-color:rgba(244,176,0,.6);
-            background:rgba(5,8,22,.98);
-        }
+        .contact-link{display:flex;align-items:center;gap:.75rem;padding:.65rem .85rem;border-radius:var(--radius-md);border:1px solid rgba(255,255,255,.08);background:rgba(5,8,22,.7);transition:transform var(--transition-fast),border-color var(--transition-fast),background var(--transition-fast);}
+        .contact-link:hover{transform:translateY(-2px);border-color:rgba(244,176,0,.6);background:rgba(5,8,22,.98);}
         .contact-link h4{margin:0 0 .05rem;font-size:.92rem;}
         .contact-link span{font-size:.8rem;color:var(--text-muted);}
-        .icon-circle{
-            width:38px;height:38px;border-radius:50%;
-            display:flex;align-items:center;justify-content:center;color:#fff;
-        }
+        .icon-circle{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;}
         .icon-circle.email{background:radial-gradient(circle,#ffca28,#f4b000);color:#1f1300;}
         .icon-circle.linkedin{background:radial-gradient(circle,#4d82e6,#214b8f);}
         .icon-circle.whatsapp{background:radial-gradient(circle,#25d366,#128c7e);}
 
         /* FOOTER */
-        .footer{
-            background:#030510;border-top:1px solid rgba(255,255,255,.06);
-            padding:2.5rem min(8vw,5rem) 1.4rem;
-            color:var(--text-muted);font-size:.82rem;
-        }
-        .footer-main{
-            display:flex;flex-wrap:wrap;align-items:center;
-            justify-content:space-between;gap:1rem;
-        }
+        .footer{background:#030510;border-top:1px solid rgba(255,255,255,.06);padding:2.5rem min(8vw,5rem) 1.4rem;color:var(--text-muted);font-size:.82rem;}
+        .footer-main{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;}
         .footer-brand{display:flex;align-items:center;gap:.6rem;}
         .footer-name{font-weight:600;color:var(--text-main);}
         .footer-tagline{flex:1 1 220px;}
         .footer-social{display:flex;gap:.6rem;}
-        .social-icon{
-            width:32px;height:32px;border-radius:50%;
-            border:1px solid rgba(255,255,255,.18);
-            display:flex;align-items:center;justify-content:center;
-            color:var(--text-main);
-            transition:background var(--transition-fast),color var(--transition-fast),
-                transform var(--transition-fast),border-color var(--transition-fast);
-        }
-        .social-icon:hover{
-            background:var(--accent);color:#111;border-color:transparent;transform:translateY(-2px);
-        }
-        .footer-bottom{
-            margin-top:1.4rem;display:flex;align-items:center;
-            justify-content:space-between;gap:1rem;
-            border-top:1px solid rgba(255,255,255,.06);padding-top:.9rem;
-        }
-        .back-to-top{
-            width:30px;height:30px;border-radius:999px;
-            border:1px solid rgba(255,255,255,.2);
-            display:inline-flex;align-items:center;justify-content:center;
-            color:var(--text-main);
-            transition:background var(--transition-fast),transform var(--transition-fast),border-color var(--transition-fast);
-        }
-        .back-to-top:hover{
-            background:var(--accent);color:#111;border-color:transparent;transform:translateY(-2px);
-        }
+        .social-icon{width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;color:var(--text-main);transition:background var(--transition-fast),color var(--transition-fast),transform var(--transition-fast),border-color var(--transition-fast);}
+        .social-icon:hover{background:var(--accent);color:#111;border-color:transparent;transform:translateY(-2px);}
+        .footer-bottom{margin-top:1.4rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;border-top:1px solid rgba(255,255,255,.06);padding-top:.9rem;}
+        .back-to-top{width:30px;height:30px;border-radius:999px;border:1px solid rgba(255,255,255,.2);display:inline-flex;align-items:center;justify-content:center;color:var(--text-main);transition:background var(--transition-fast),transform var(--transition-fast),border-color var(--transition-fast);}
+        .back-to-top:hover{background:var(--accent);color:#111;border-color:transparent;transform:translateY(-2px);}
 
+        /* FLOATING WHATSAPP */
+        .whatsapp-float{position:fixed;bottom:2rem;right:2rem;z-index:50;width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,#25d366,#128c7e);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.55rem;box-shadow:0 6px 28px rgba(37,211,102,.55);transition:transform var(--transition-fast),box-shadow var(--transition-fast);text-decoration:none;}
+        .whatsapp-float:hover{transform:scale(1.12);box-shadow:0 10px 38px rgba(37,211,102,.75);}
+        .whatsapp-float::before{content:"";position:absolute;inset:0;border-radius:50%;background:rgba(37,211,102,.35);animation:waPulse 2.2s ease-out infinite;}
+
+        /* REVEAL */
         .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease-out,transform .7s ease-out;}
         .reveal.visible{opacity:1;transform:translateY(0);}
+        .reveal-left{opacity:0;transform:translateX(-30px);transition:opacity .7s ease-out,transform .7s ease-out;}
+        .reveal-left.visible{opacity:1;transform:translateX(0);}
+        .reveal-right{opacity:0;transform:translateX(30px);transition:opacity .7s ease-out,transform .7s ease-out;}
+        .reveal-right.visible{opacity:1;transform:translateX(0);}
+
         @keyframes spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
         @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+        @keyframes nodePulse{0%,100%{box-shadow:0 0 8px var(--accent);}50%{box-shadow:0 0 20px var(--accent),0 0 35px rgba(244,176,0,.4);}}
+        @keyframes fadeSlideDown{from{opacity:0;transform:translateY(-16px);}to{opacity:1;transform:translateY(0);}}
+        @keyframes fadeSlideUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+        @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+        @keyframes detailFadeIn{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+        @keyframes waPulse{0%{transform:scale(1);opacity:.7;}100%{transform:scale(2.1);opacity:0;}}
 
-        @media (max-width:960px){
-            .hero{grid-template-columns:minmax(0,1fr);}
-            .hero-visual{order:-1;}
-        }
-        @media (max-width:820px){
+        @media(max-width:960px){.hero{grid-template-columns:minmax(0,1fr);}.hero-visual{order:-1;}.steps-grid::before{display:none;}}
+        @media(max-width:820px){
             .header{padding-inline:1.4rem;}
             .nav-toggle{display:flex;}
-            .nav-links{
-                position:absolute;top:100%;right:0;
-                background:rgba(3,5,16,.98);
-                border-radius:0 0 0 18px;
-                border-left:1px solid rgba(255,255,255,.08);
-                border-bottom:1px solid rgba(255,255,255,.08);
-                flex-direction:column;padding:.8rem 1.4rem 1rem;gap:.9rem;
-                transform-origin:top right;transform:scaleY(.4);
-                opacity:0;pointer-events:none;
-                transition:transform var(--transition-med),opacity var(--transition-med);
-            }
+            .nav-links{position:absolute;top:100%;right:0;background:rgba(3,5,16,.98);border-radius:0 0 0 18px;border-left:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);flex-direction:column;padding:.8rem 1.4rem 1rem;gap:.9rem;transform-origin:top right;transform:scaleY(.4);opacity:0;pointer-events:none;transition:transform var(--transition-med),opacity var(--transition-med);}
             .nav-links.open{opacity:1;transform:scaleY(1);pointer-events:auto;}
             .section,.hero{padding-inline:1.4rem;}
             .about-layout,.contact-layout{grid-template-columns:minmax(0,1fr);}
             .footer-main{align-items:flex-start;flex-direction:column;}
+            #course-detail-section{padding-inline:1.4rem;}
+            .detail-body{padding:1.4rem 1.4rem 1.8rem;}
+            .whatsapp-float{bottom:1.4rem;right:1.4rem;width:50px;height:50px;font-size:1.3rem;}
         }
-        @media (max-width:600px){
-            .hero{padding-top:5.2rem;}
-            .hero-title{font-size:2.15rem;}
-            .floating-chip{display:none;}
-        }
+        @media(max-width:600px){.hero{padding-top:5.2rem;}.hero-title{font-size:2.15rem;}.floating-chip{display:none;}.detail-meta{gap:.6rem;}.detail-meta-item{font-size:.78rem;padding:.45rem .8rem;}.pricing-grid{grid-template-columns:1fr;}.stats-grid{grid-template-columns:repeat(2,1fr);}}
     </style>
 </head>
 <body>
 
+<div id="scroll-progress"></div>
+<canvas id="particle-canvas"></canvas>
+
 <header class="header" id="top">
-    <div class="logo-badge">
-        <span class="logo-main">Skill</span>
-        <span class="logo-mid">M@</span>
-        <span class="logo-end">X</span>
-    </div>
+    <a href="#home" class="logo-badge">
+        <span class="logo-main">Skill</span><span class="logo-mid">M@</span><span class="logo-end">X</span>
+    </a>
     <nav class="navbar">
-        <ul class="nav-links">
+        <ul class="nav-links" id="navList">
             <li><a href="#home" class="nav-link active">Home</a></li>
             <li><a href="#courses" class="nav-link">Courses</a></li>
+            <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
             <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#pricing" class="nav-link">Pricing</a></li>
             <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
-        <div class="nav-toggle" id="navToggle">
-            <span></span><span></span><span></span>
-        </div>
+        <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div>
     </nav>
 </header>
 
+<!-- HERO -->
 <section class="hero" id="home">
     <div class="hero-content">
-        <p class="hero-pill">Online Learning • Tech Skills</p>
-        <h1 class="hero-title">
-           -SkillM@X-  <span class="accent">Empower Your Skills</span> .
-        </h1>
-        <p class="hero-subtitle">
-            SkillM@X is a futuristic learning platform for Python, Machine Learning, Data Science,
-            Data Visualization, Artificial Intelligence, Generative AI, Web Development, and more.
-        </p>
+        <p class="hero-pill"><i class="fa-solid fa-bolt" style="color:var(--accent)"></i> Online Learning • Future Tech Skills</p>
+        <h1 class="hero-title"><span class="glow-text">SkillM@X</span> — <span class="accent">Empower Your Future</span></h1>
+        <p class="hero-subtitle">A futuristic online learning platform for Python, Machine Learning, Data Science, AI, Generative AI, Web Development &amp; more — with live classes &amp; certificates.</p>
         <div class="hero-actions">
-            <a href="#courses" class="btn btn-primary">Explore Courses</a>
-            <a href="#about" class="btn btn-ghost">Why SkillM@X?</a>
+            <a href="#courses" class="btn btn-primary"><i class="fa-solid fa-rocket"></i> Explore Courses</a>
+            <a href="#how-it-works" class="btn btn-ghost"><i class="fa-solid fa-circle-play"></i> How It Works</a>
         </div>
         <div class="hero-stats">
-            <div class="stat-card">
-                <span class="stat-number">Live</span>
-                <span class="stat-label">Virtual Classes</span>
-            </div>
-            <div class="stat-card">
-                <span class="stat-number">Futuristic Courses</span>
-                <span class="stat-label">Course Completion Certificate</span>
-            </div>
-            <div class="stat-card">
-                <span class="stat-number">Trusted</span>
-                <span class="stat-label">Learners worldwide</span>
-            </div>
+            <div class="stat-card"><span class="stat-number">500+</span><span class="stat-label">Students Enrolled</span></div>
+            <div class="stat-card"><span class="stat-number">8</span><span class="stat-label">Futuristic Courses</span></div>
+            <div class="stat-card"><span class="stat-number">100%</span><span class="stat-label">Certificate on Completion</span></div>
+            <div class="stat-card"><span class="stat-number">Live</span><span class="stat-label">Virtual Classes</span></div>
         </div>
     </div>
-
     <div class="hero-visual">
         <div class="holo-ring ring-outer"></div>
         <div class="holo-ring ring-middle"></div>
         <div class="holo-ring ring-inner"></div>
-
-        <div class="hero-node node-1">
-            <span class="node-label">Beginner to Advanced Python</span><span class="node-dot"></span>
-        </div>
-        <div class="hero-node node-2">
-            <span class="node-label">Machine Learning</span><span class="node-dot"></span>
-        </div>
-        <div class="hero-node node-3">
-            <span class="node-label">Data Science </span><span class="node-dot"></span>
-        </div>
-
-        <div class="floating-chip chip-1">
-            <i class="fa-solid fa-bolt"></i>Courses at Affordable Price
-        </div>
-        <div class="floating-chip chip-2">
-            <i class="fa-solid fa-infinity"></i>Virtual Interaction with Team
-        </div>
+        <div class="hero-node node-1"><span>Beginner to Advanced Python</span><span class="node-dot"></span></div>
+        <div class="hero-node node-2"><span>Machine Learning</span><span class="node-dot"></span></div>
+        <div class="hero-node node-3"><span>Data Science</span><span class="node-dot"></span></div>
+        <div class="floating-chip chip-1"><i class="fa-solid fa-bolt"></i>Affordable Pricing</div>
+        <div class="floating-chip chip-2"><i class="fa-solid fa-infinity"></i>Virtual Interaction</div>
     </div>
 </section>
 
-<section class="section" id="courses">
-    <div class="section-header">
-        <h2>Courses at SkillM@X</h2>
-        <p>Skills that Empowers your Career.Checkout our Courses </p>
+<!-- COUNTER STATS -->
+<div class="stats-section">
+    <div class="stats-grid">
+        <div class="counter-card reveal"><i class="fa-solid fa-users counter-icon"></i><span class="counter-number" data-target="500" data-suffix="+">0+</span><span class="counter-label">Happy Students</span></div>
+        <div class="counter-card reveal"><i class="fa-solid fa-book-open counter-icon"></i><span class="counter-number" data-target="8" data-suffix="">0</span><span class="counter-label">Courses Available</span></div>
+        <div class="counter-card reveal"><i class="fa-solid fa-certificate counter-icon"></i><span class="counter-number" data-target="100" data-suffix="%">0%</span><span class="counter-label">Certified Completions</span></div>
+        <div class="counter-card reveal"><i class="fa-solid fa-star counter-icon"></i><span class="counter-number" data-target="4.9" data-suffix="" data-decimal="true">0</span><span class="counter-label">Average Rating</span></div>
     </div>
+</div>
 
+<!-- HOW IT WORKS -->
+<section class="section" id="how-it-works">
+    <div class="section-header"><h2>How SkillM@X Works</h2><p>Getting started is simple. Three easy steps to launch your learning journey.</p></div>
+    <div class="steps-grid">
+        <div class="step-card reveal"><div class="step-number">1</div><h3>Browse &amp; Choose</h3><p>Explore our curated list of future-ready courses and pick the one that matches your career goals.</p></div>
+        <div class="step-card reveal" style="transition-delay:.15s"><div class="step-number">2</div><h3>Enroll via WhatsApp</h3><p>Click Enroll Now, message us on WhatsApp, and our team will guide you through onboarding instantly.</p></div>
+        <div class="step-card reveal" style="transition-delay:.3s"><div class="step-number">3</div><h3>Learn &amp; Get Certified</h3><p>Attend live Google Meet sessions, complete the course, and receive your official SkillM@X certificate.</p></div>
+    </div>
+</section>
+
+<!-- COURSES -->
+<section class="section section-alt" id="courses">
+    <div class="section-header"><h2>Courses at SkillM@X</h2><p>Skills that empower your career. Click any course card to see full details &amp; enroll.</p></div>
+    <div class="course-filter">
+        <button class="filter-btn active" data-filter="all">All Courses</button>
+        <button class="filter-btn" data-filter="data">Data &amp; AI</button>
+        <button class="filter-btn" data-filter="programming">Programming</button>
+        <button class="filter-btn" data-filter="web">Web Dev</button>
+    </div>
     <div class="course-grid">
-        <!-- Python -->
-        <article class="course-card">
-            <div class="course-image">
-                <img src="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Python code on screen">
-                <div class="course-chip">Beginner Friendly</div>
-                <div class="course-orb orb-1"></div>
-                <div class="course-icon-strip">
-                    <span class="course-icon"><i class="fa-solid fa-code"></i></span>
-                    <span class="course-icon"><i class="fa-solid fa-terminal"></i></span>
-                    <span class="course-icon"><i class="fa-solid fa-robot"></i></span>
-                </div>
-            </div>
-            <div class="course-body">
-                <h3>Python Programming</h3>
-                <p>Master Python fundamentals, problem-solving, and automation with hands-on coding challenges.</p>
-            </div>
+        <article class="course-card reveal" onclick="showCourse('python')" data-category="programming">
+            <div class="course-image"><img loading="lazy" src="https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Python"><div class="course-chip">Beginner Friendly</div><div class="course-orb orb-1"></div><div class="course-icon-strip"><span class="course-icon"><i class="fa-solid fa-code"></i></span><span class="course-icon"><i class="fa-solid fa-terminal"></i></span><span class="course-icon"><i class="fa-solid fa-robot"></i></span></div></div>
+            <div class="course-body"><h3>Python Programming</h3><p>Master Python fundamentals, problem-solving, and automation with hands-on coding challenges.</p></div>
+            <span class="click-hint"><i class="fa-solid fa-arrow-right"></i> View Details</span>
         </article>
-
-        <!-- Machine Learning -->
-        <article class="course-card">
-            <div class="course-image">
-                <img src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Machine learning visualization">
-                <div class="course-chip">Model Building</div>
-                <div class="course-orb orb-2"></div>
-                <div class="course-icon-strip">
-                    <span class="course-icon"><i class="fa-solid fa-brain"></i></span>
-                    <span class="course-icon"><i class="fa-solid fa-diagram-project"></i></span>
-                    <span class="course-icon"><i class="fa-solid fa-chart-line"></i></span>
-                </div>
-            </div>
-            <div class="course-body">
-                <h3>Machine Learning</h3>
-                <p>Learn supervised, unsupervised, and ensemble methods with practical datasets and evaluation.</p>
-            </div>
+        <article class="course-card reveal" onclick="showCourse('ml')" data-category="data">
+            <div class="course-image"><img loading="lazy" src="https://images.pexels.com/photos/8386422/pexels-photo-8386422.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Machine Learning"><div class="course-chip">Model Building</div><div class="course-orb orb-2"></div><div class="course-icon-strip"><span class="course-icon"><i class="fa-solid fa-brain"></i></span><span class="course-icon"><i class="fa-solid fa-diagram-project"></i></span><span class="course-icon"><i class="fa-solid fa-chart-line"></i></span></div></div>
+            <div class="course-body"><h3>Machine Learning</h3><p>Learn supervised, unsupervised, and ensemble methods with practical datasets and evaluation.</p></div>
+            <span class="click-hint"><i class="fa-solid fa-arrow-right"></i> View Details</span>
         </article>
-
-        <!-- Data Science -->
-        <article class="course-card">
-            <div class="course-image">
-                <img src="https://images.pexels.com/photos/669610/pexels-photo-669610.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Data charts and dashboards">
-                <div class="course-chip">End-to-End</div>
-                <div class="course-orb orb-3"></div>
-                <div class="course-icon-strip">
-                    <span class="course-icon"><i class="fa-solid fa-database"></i></span>
-                    <span class="course-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></span>
-                    <span class="course-icon"><i class="fa-solid fa-layer-group"></i></span>
-                </div>
-            </div>
-            <div class="course-body">
-                <h3>Data Science</h3>
-                <p>Cover data cleaning, feature engineering, experimentation, and result communication.</p>
-            </div>
+        <article class="course-card reveal" onclick="showCourse('datascience')" data-category="data">
+            <div class="course-image"><img loading="lazy" src="https://images.pexels.com/photos/7567443/pexels-photo-7567443.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Data Science"><div class="course-chip">End-to-End</div><div class="course-orb orb-3"></div><div class="course-icon-strip"><span class="course-icon"><i class="fa-solid fa-database"></i></span><span class="course-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></span><span class="course-icon"><i class="fa-solid fa-layer-group"></i></span></div></div>
+            <div class="course-body"><h3>Data Science</h3><p>Cover data cleaning, feature engineering, experimentation, and result communication.</p></div>
+            <span class="click-hint"><i class="fa-solid fa-arrow-right"></i> View Details</span>
         </article>
-
-        <!-- Data Visualization -->
-        <article class="course-card">
-            <div class="course-image">
-                <img src="https://images.pexels.com/photos/572056/pexels-photo-572056.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Colorful data visualization">
-                <div class="course-chip">Dashboards</div>
-                <div class="course-orb orb-4"></div>
-                <div class="course-icon-strip">
-                    <span class="course-icon"><i class="fa-solid fa-chart-pie"></i></span>
-                    <span class="course-icon"><i class="fa-solid fa-chart-bar"></i></span>
-                    <span class="course-icon"><i class="fa-solid fa-table"></i></span>
-                </div>
-            </div>
-            <div class="course-body">
-                <h3>Data Visualization</h3>
-                <p>Design modern charts and dashboards that turn data into compelling visual stories.</p>
-            </div>
+        <article class="course-card reveal" onclick="showCourse('datavis')" data-category="data">
+            <div class="course-image"><img loading="lazy" src="https://images.pexels.com/photos/186461/pexels-photo-186461.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Data Visualization"><div class="course-chip">Dashboards</div><div class="course-orb orb-4"></div><div class="course-icon-strip"><span class="course-icon"><i class="fa-solid fa-chart-pie"></i></span><span class="course-icon"><i class="fa-solid fa-chart-bar"></i></span><span class="course-icon"><i class="fa-solid fa-table"></i></span></div></div>
+            <div class="course-body"><h3>Data Visualization</h3><p>Design modern charts and dashboards that turn data into compelling visual stories.</p></div>
+            <span class="click-hint"><i class="fa-solid fa-arrow-right"></i> View Details</span>
         </article>
-
-        <!-- Artificial Intelligence -->
-        <article class="course-card">
-            <div class="course-image">
-                <img src="https://images.pexels.com/photos/8386434/pexels-photo-8386434.jpeg?auto=compress&cs=tinysrgb&w=800" alt="AI circuit face">
-                <div class="course-chip">Deep Learning</div>
-                <div class="course-orb orb-5"></div>
-                <div class="course-icon-strip">
-                    <span class="course-icon"><i class="fa-solid fa-microchip"></i></span>
-                    <span class="course-icon"><i class="fa-solid fa-network-wired"></i></span>
-                    <span class="course-icon"><i class="fa-solid fa-wave-square"></i></span>
-                </div>
-            </div>
-            <div class="course-body">
-                <h3>Artificial Intelligence</h3>
-                <p>Explore neural networks, deep learning workflows, and intelligent applications.</p>
-            </div>
+        <article class="course-card reveal" onclick="showCourse('ai')" data-category="data">
+            <div class="course-image"><img loading="lazy" src="https://images.pexels.com/photos/8386434/pexels-photo-8386434.jpeg?auto=compress&cs=tinysrgb&w=800" alt="AI"><div class="course-chip">Deep Learning</div><div class="course-orb orb-5"></div><div class="course-icon-strip"><span class="course-icon"><i class="fa-solid fa-microchip"></i></span><span class="course-icon"><i class="fa-solid fa-network-wired"></i></span><span class="course-icon"><i class="fa-solid fa-wave-square"></i></span></div></div>
+            <div class="course-body"><h3>Artificial Intelligence</h3><p>Explore neural networks, deep learning workflows, and intelligent applications.</p></div>
+            <span class="click-hint"><i class="fa-solid fa-arrow-right"></i> View Details</span>
         </article>
-
-        <!-- Generative AI -->
-        <article class="course-card">
-            <div class="course-image">
-                <img src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Generative AI art">
-                <div class="course-chip">Generative Models</div>
-                <div class="course-orb orb-7"></div>
-                <div class="course-icon-strip">
-                    <span class="course-icon"><i class="fa-solid fa-microchip"></i></span>
-                    <span class="course-icon"><i class="fa-solid fa-sparkles"></i></span>
-                    <span class="course-icon"><i class="fa-solid fa-image"></i></span>
-                </div>
-            </div>
-            <div class="course-body">
-                <h3>Generative AI</h3>
-                <p>Build with large language models and diffusion systems to generate code, text, and media.</p>
-            </div>
+        <article class="course-card reveal" onclick="showCourse('genai')" data-category="data">
+            <div class="course-image"><img loading="lazy" src="https://images.pexels.com/photos/8386423/pexels-photo-8386423.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Generative AI"><div class="course-chip">Generative Models</div><div class="course-orb orb-7"></div><div class="course-icon-strip"><span class="course-icon"><i class="fa-solid fa-microchip"></i></span><span class="course-icon"><i class="fa-solid fa-sparkles"></i></span><span class="course-icon"><i class="fa-solid fa-image"></i></span></div></div>
+            <div class="course-body"><h3>Generative AI</h3><p>Build with large language models and diffusion systems to generate code, text, and media.</p></div>
+            <span class="click-hint"><i class="fa-solid fa-arrow-right"></i> View Details</span>
         </article>
-
-        <!-- Web Development -->
-        <article class="course-card">
-            <div class="course-image">
-                <img src="https://images.pexels.com/photos/4974912/pexels-photo-4974912.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Web development screens">
-                <div class="course-chip">Full Stack</div>
-                <div class="course-orb orb-8"></div>
-                <div class="course-icon-strip">
-                    <span class="course-icon"><i class="fa-solid fa-globe"></i></span>
-                    <span class="course-icon"><i class="fa-solid fa-laptop-code"></i></span>
-                    <span class="course-icon"><i class="fa-solid fa-layer-group"></i></span>
-                </div>
-            </div>
-            <div class="course-body">
-                <h3>Web Development</h3>
-                <p>Create responsive, modern web applications from front end to back end deployment.</p>
-            </div>
+        <article class="course-card reveal" onclick="showCourse('webdev')" data-category="web">
+            <div class="course-image"><img loading="lazy" src="https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Web Dev"><div class="course-chip">Full Stack</div><div class="course-orb orb-8"></div><div class="course-icon-strip"><span class="course-icon"><i class="fa-solid fa-globe"></i></span><span class="course-icon"><i class="fa-solid fa-laptop-code"></i></span><span class="course-icon"><i class="fa-solid fa-layer-group"></i></span></div></div>
+            <div class="course-body"><h3>Web Development</h3><p>Create responsive, modern web applications from front end to back end deployment.</p></div>
+            <span class="click-hint"><i class="fa-solid fa-arrow-right"></i> View Details</span>
         </article>
-
-        <!-- More Courses -->
-        <article class="course-card">
-            <div class="course-image">
-                <img src="https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Cloud and code concept">
-                <div class="course-chip">Coming Soon</div>
-                <div class="course-orb orb-6"></div>
-                <div class="course-icon-strip">
-                    <span class="course-icon"><i class="fa-solid fa-cloud"></i></span>
-                    <span class="course-icon"><i class="fa-solid fa-gears"></i></span>
-                    <span class="course-icon"><i class="fa-solid fa-flask"></i></span>
-                </div>
-            </div>
-            <div class="course-body">
-                <h3>More Courses</h3>
-                <p>Advanced topics like MLOps, NLP, cloud, and specialized AI tracks are on the roadmap.</p>
-            </div>
+        <article class="course-card reveal" onclick="showCourse('more')" data-category="data">
+            <div class="course-image"><img loading="lazy" src="https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&w=800" alt="More Courses"><div class="course-chip">Coming Soon</div><div class="course-orb orb-6"></div><div class="course-icon-strip"><span class="course-icon"><i class="fa-solid fa-cloud"></i></span><span class="course-icon"><i class="fa-solid fa-gears"></i></span><span class="course-icon"><i class="fa-solid fa-flask"></i></span></div></div>
+            <div class="course-body"><h3>More Courses</h3><p>Advanced topics like MLOps, NLP, cloud, and specialized AI tracks are on the roadmap.</p></div>
+            <span class="click-hint"><i class="fa-solid fa-arrow-right"></i> View Details</span>
         </article>
     </div>
 </section>
 
+<!-- COURSE DETAIL -->
+<section id="course-detail-section">
+    <button class="detail-back-btn" onclick="hideCourse()"><i class="fa-solid fa-arrow-left"></i> Back to Courses</button>
+    <div class="detail-card" id="detail-card-content"></div>
+</section>
+
+<!-- ABOUT -->
 <section class="section section-alt" id="about">
-    <div class="section-header">
-        <h2>About SkillM@X</h2>
-        <p>SkillM@X is a Online Learning Platform.We provide Futuristic Courses,Where you can purchase and learn with us through Online Classes that We Provide throughout the course Completion ,and We provide Course Completion Certificates </p>
-    </div>
+    <div class="section-header"><h2>About SkillM@X</h2><p>A private online learning platform founded with a mission to make quality tech education accessible to everyone.</p></div>
     <div class="about-layout">
-        <div class="about-text">
-            <p>
-                SkillM@X is a private online learning company founded in December 2025 with a mission to help learners build strong careers through high-quality, accessible, and industry-relevant education.
-                At SkillM@X, learners can explore a wide range of courses and purchase them by simply contacting us through our website or social media platforms. We provide courses at affordable prices, making quality education accessible to everyone.
-                All classes are conducted online, through platform  Google Meet ensuring flexibility and convenience for learners across different regions. Each course is taught by our skilled, experienced, and student-friendly tutors who focus on clear communication, practical knowledge, and real-world applications.
-            </p>
-            <p>
-                Upon successful completion of any course, learners will receive a certificate, acknowledging their effort, dedication, and newly gained skills.
-
-Our vision is to create strong career opportunities for every student who learns with us. With SkillM@X, we aim to build a community where quality learning meets passion and growth.
-            </p>
+        <div class="about-text reveal-left">
+            <p>SkillM@X is a private online learning company founded in December 2025 with a mission to help learners build strong careers through high-quality, accessible, and industry-relevant education. Learners can explore a wide range of courses at affordable prices, making quality education accessible to everyone.</p>
+            <p>All classes are conducted online via Google Meet, ensuring flexibility for learners across different regions. Each course is taught by skilled, experienced, and student-friendly tutors who focus on clear communication, practical knowledge, and real-world applications. Upon successful completion, learners receive a certificate acknowledging their effort and newly gained skills.</p>
             <ul class="about-list">
-                <li><i class="fa-solid fa-check"></i>Career-Focused Learning.</li>
-                <li><i class="fa-solid fa-check"></i> Quality Training by Skilled Tutors.</li>
-                <li><i class="fa-solid fa-check"></i> Affordable & Accessible Education.</li>
+                <li><i class="fa-solid fa-check"></i> Career-Focused Learning</li>
+                <li><i class="fa-solid fa-check"></i> Quality Training by Skilled Tutors</li>
+                <li><i class="fa-solid fa-check"></i> Affordable &amp; Accessible Education</li>
+                <li><i class="fa-solid fa-check"></i> Live Virtual Classes via Google Meet</li>
+                <li><i class="fa-solid fa-check"></i> Official Course Completion Certificate</li>
             </ul>
+            <div class="skill-bars" id="skillBars">
+                <div class="skill-bar-item"><div class="skill-bar-label"><span>Python &amp; Data Science</span><span>95%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="95"></div></div></div>
+                <div class="skill-bar-item"><div class="skill-bar-label"><span>Artificial Intelligence</span><span>90%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div></div>
+                <div class="skill-bar-item"><div class="skill-bar-label"><span>Web Development</span><span>88%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div></div>
+                <div class="skill-bar-item"><div class="skill-bar-label"><span>Student Satisfaction</span><span>98%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="98"></div></div></div>
+            </div>
         </div>
-        <div class="about-panels">
-            <div class="about-panel">
-                <span class="panel-label">Learning Experience</span>
-                <h3>Guided skill journeys</h3>
-                <p>SkillM@X helps you gain practical, industry-ready skills that strengthen your career and open new opportunities..</p>
-            </div>
-            <div class="about-panel">
-                <span class="panel-label">Virtual Classes</span>
-                <h3>Ready for classrooms</h3>
-                <p>Our experienced tutors make learning simple, interactive, and effective for every student.</p>
-            </div>
+        <div class="about-panels reveal-right">
+            <div class="about-panel"><span class="panel-label">Learning Experience</span><h3>Guided skill journeys</h3><p>SkillM@X helps you gain practical, industry-ready skills that strengthen your career and open new opportunities.</p></div>
+            <div class="about-panel"><span class="panel-label">Virtual Classes</span><h3>Ready for classrooms</h3><p>Our experienced tutors make learning simple, interactive, and effective for every student.</p></div>
+            <div class="about-panel"><span class="panel-label">Certification</span><h3>Recognized achievement</h3><p>Every graduate earns a SkillM@X certificate — a testament to their dedication and skill mastery.</p></div>
         </div>
     </div>
 </section>
 
-<section class="section" id="contact">
-    <div class="section-header">
-        <h2>Contact SkillM@X</h2>
-        <p>Have a query, partnership idea, or feedback? Reach out using the form or links.</p>
+<!-- TESTIMONIALS -->
+<section class="section" id="testimonials">
+    <div class="section-header"><h2>What Our Students Say</h2><p>Real feedback from learners who transformed their careers with SkillM@X.</p></div>
+    <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+            <div class="stars">★★★★★</div>
+            <p class="testimonial-text">"SkillM@X completely changed my perspective on programming. The Python course was so well structured — I went from zero to building automation scripts in just 6 weeks!"</p>
+            <div class="testimonial-author"><div class="author-avatar">AR</div><div><div class="author-name">Arjun R.</div><div class="author-course">Python Programming</div></div></div>
+        </div>
+        <div class="testimonial-card reveal" style="transition-delay:.12s">
+            <div class="stars">★★★★★</div>
+            <p class="testimonial-text">"The Data Science course was incredibly practical. The tutor explained every concept with real datasets and I could immediately apply what I learned in my job."</p>
+            <div class="testimonial-author"><div class="author-avatar">PK</div><div><div class="author-name">Priya K.</div><div class="author-course">Data Science</div></div></div>
+        </div>
+        <div class="testimonial-card reveal" style="transition-delay:.24s">
+            <div class="stars">★★★★★</div>
+            <p class="testimonial-text">"Affordable, live classes, and a genuine certificate — SkillM@X delivers everything it promises. The AI course gave me skills I now use every single day at work."</p>
+            <div class="testimonial-author"><div class="author-avatar">MS</div><div><div class="author-name">Mohammed S.</div><div class="author-course">Artificial Intelligence</div></div></div>
+        </div>
     </div>
+</section>
+
+<!-- PRICING -->
+<section class="section section-alt" id="pricing">
+    <div class="section-header"><h2>Simple, Affordable Pricing</h2><p>Quality education shouldn't cost a fortune. Choose the plan that fits your goals.</p></div>
+    <div class="pricing-grid">
+        <div class="pricing-card reveal">
+            <div class="pricing-tier">Starter</div>
+            <div class="pricing-price">Contact Us <span>/ course</span></div>
+            <div class="pricing-desc">Perfect for learning one focused skill</div>
+            <ul class="pricing-features">
+                <li><i class="fa-solid fa-check"></i> Single course access</li>
+                <li><i class="fa-solid fa-check"></i> Live Google Meet classes</li>
+                <li><i class="fa-solid fa-check"></i> Course material included</li>
+                <li><i class="fa-solid fa-check"></i> Completion certificate</li>
+                <li><i class="fa-solid fa-check"></i> WhatsApp support</li>
+            </ul>
+            <a href="https://wa.me/9496259351?text=Hi%20SkillMax!%20I%27m%20interested%20in%20a%20single%20course.%20Please%20share%20pricing." target="_blank" class="pricing-btn"><i class="fa-brands fa-whatsapp"></i> Get Started</a>
+        </div>
+        <div class="pricing-card featured reveal" style="transition-delay:.15s">
+            <div class="pricing-tier">Pro Bundle</div>
+            <div class="pricing-price">Best Value <span>/ bundle</span></div>
+            <div class="pricing-desc">Combine 2 or more courses &amp; save</div>
+            <ul class="pricing-features">
+                <li><i class="fa-solid fa-check"></i> Multiple course access</li>
+                <li><i class="fa-solid fa-check"></i> Live Google Meet classes</li>
+                <li><i class="fa-solid fa-check"></i> All course materials</li>
+                <li><i class="fa-solid fa-check"></i> Certificate per course</li>
+                <li><i class="fa-solid fa-check"></i> Priority WhatsApp support</li>
+                <li><i class="fa-solid fa-check"></i> Bundle discount applied</li>
+            </ul>
+            <a href="https://wa.me/9496259351?text=Hi%20SkillMax!%20I%27m%20interested%20in%20a%20course%20bundle.%20Please%20share%20details." target="_blank" class="pricing-btn"><i class="fa-brands fa-whatsapp"></i> Enroll Now</a>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+    <div class="section-header"><h2>Frequently Asked Questions</h2><p>Got questions? We've got answers. Reach out on WhatsApp if you need more help.</p></div>
+    <div class="faq-list">
+        <div class="faq-item reveal"><div class="faq-question">How are classes conducted at SkillM@X? <span class="faq-icon"><i class="fa-solid fa-plus"></i></span></div><div class="faq-answer">All classes at SkillM@X are conducted live via Google Meet. Once you enroll, our team will schedule sessions at a time that works for you, ensuring flexibility for learners in any region.</div></div>
+        <div class="faq-item reveal"><div class="faq-question">Do I get a certificate after completing a course? <span class="faq-icon"><i class="fa-solid fa-plus"></i></span></div><div class="faq-answer">Yes! Every learner who successfully completes a SkillM@X course receives an official Course Completion Certificate. This certificate acknowledges your dedication and the skills you've gained.</div></div>
+        <div class="faq-item reveal"><div class="faq-question">Are the courses suitable for beginners? <span class="faq-icon"><i class="fa-solid fa-plus"></i></span></div><div class="faq-answer">Absolutely. Most of our courses — especially Python Programming and Web Development — are designed to take you from zero to proficient. Our tutors explain every concept clearly, making learning accessible for everyone.</div></div>
+        <div class="faq-item reveal"><div class="faq-question">How do I enroll in a course? <span class="faq-icon"><i class="fa-solid fa-plus"></i></span></div><div class="faq-answer">Enrolling is simple! Click on any course card on this page, then click the "Enroll Now on WhatsApp" button. This opens a WhatsApp chat with our team, and we'll guide you through everything from there.</div></div>
+        <div class="faq-item reveal"><div class="faq-question">What makes SkillM@X different from other platforms? <span class="faq-icon"><i class="fa-solid fa-plus"></i></span></div><div class="faq-answer">SkillM@X offers live, interactive virtual classes — not pre-recorded videos. You get real-time interaction with experienced tutors, personalized guidance, affordable pricing, and a genuine certificate — all in one place.</div></div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section section-alt" id="contact">
+    <div class="section-header"><h2>Contact SkillM@X</h2><p>Have a query, partnership idea, or feedback? Reach out using the form or links below.</p></div>
     <div class="contact-layout">
-        <form class="contact-form" id="contactForm">
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input id="name" type="text" placeholder="Your full name" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input id="email" type="email" placeholder="you@example.com" required>
-            </div>
-            <div class="form-group">
-                <label for="message">Message</label>
-                <textarea id="message" rows="4" placeholder="How can SkillM@X help you?" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary full-width">Send Message</button>
+        <form class="contact-form reveal-left" id="contactForm">
+            <div class="form-group"><label for="name">Name</label><input id="name" type="text" placeholder="Your full name" required></div>
+            <div class="form-group"><label for="email">Email</label><input id="email" type="email" placeholder="you@example.com" required></div>
+            <div class="form-group"><label for="message">Message</label><textarea id="message" rows="4" placeholder="How can SkillM@X help you?" required></textarea></div>
+            <button type="submit" class="btn btn-primary full-width"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
             <p class="form-status" id="formStatus"></p>
         </form>
-
-        <div class="contact-direct">
+        <div class="contact-direct reveal-right">
             <h3>Connect directly</h3>
             <p>Choose any channel that works best for you to start a conversation.</p>
             <div class="contact-links">
-                <a href="mailto:skillmaxlearn@gmail.com" class="contact-link" target="_blank">
-                    <span class="icon-circle email"><i class="fa-solid fa-envelope"></i></span>
-                    <div>
-                        <h4>Email</h4><span>skillmaxlearn@gmail.com</span>
-                    </div>
-                </a>
-                <a href=https://www.linkedin.com/in/skillmax-learning-415990393/" class="contact-link" target="_blank">
-                    <span class="icon-circle linkedin"><i class="fa-brands fa-linkedin-in"></i></span>
-                    <div>
-                        <h4>LinkedIn</h4><span>skillmax.linkedin</span>
-                    </div>
-                </a>
-                <a href="https://wa.me/9496258931" class="contact-link" target="_blank">
-                    <span class="icon-circle whatsapp"><i class="fa-brands fa-whatsapp"></i></span>
-                    <div>
-                        <h4>WhatsApp</h4><span>+91 9496258931</span>
-                    </div>
-                </a>
+                <a href="mailto:skillmaxlearn@gmail.com" class="contact-link" target="_blank"><span class="icon-circle email"><i class="fa-solid fa-envelope"></i></span><div><h4>Email</h4><span>skillmaxlearn@gmail.com</span></div></a>
+                <a href="https://www.linkedin.com/in/skillmax-learning-415990393/" class="contact-link" target="_blank"><span class="icon-circle linkedin"><i class="fa-brands fa-linkedin-in"></i></span><div><h4>LinkedIn</h4><span>SkillMax Learning</span></div></a>
+                <a href="https://wa.me/9496259351" class="contact-link" target="_blank"><span class="icon-circle whatsapp"><i class="fa-brands fa-whatsapp"></i></span><div><h4>WhatsApp</h4><span>+91 9496259351</span></div></a>
             </div>
         </div>
     </div>
@@ -731,98 +541,110 @@ Our vision is to create strong career opportunities for every student who learns
 
 <footer class="footer">
     <div class="footer-main">
-        <div class="footer-brand">
-            <div class="logo-badge small">
-                <span class="logo-main">Skill</span>
-                <span class="logo-mid">M@</span>
-                <span class="logo-end">X</span>
-            </div>
-            <span class="footer-name">SkillM@X</span>
-        </div>
+        <div class="footer-brand"><div class="logo-badge small"><span class="logo-main">Skill</span><span class="logo-mid">M@</span><span class="logo-end">X</span></div><span class="footer-name">SkillM@X</span></div>
         <p class="footer-tagline">Empowering learners with focused, future-ready tech skills.</p>
         <div class="footer-social">
             <a href="mailto:skillmaxlearn@gmail.com" class="social-icon"><i class="fa-solid fa-envelope"></i></a>
             <a href="https://www.linkedin.com/in/skillmax-learning-415990393/" target="_blank" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="https://wa.me/8156978231" target="_blank" class="social-icon"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://wa.me/9496259351" target="_blank" class="social-icon"><i class="fa-brands fa-whatsapp"></i></a>
         </div>
     </div>
-    <div class="footer-bottom">
-        <span>© <span id="year"></span> SkillM@X. All rights reserved.</span>
-        <a href="#top" class="back-to-top"><i class="fa-solid fa-arrow-up"></i></a>
-    </div>
+    <div class="footer-bottom"><span>© <span id="year"></span> SkillM@X. All rights reserved.</span><a href="#top" class="back-to-top"><i class="fa-solid fa-arrow-up"></i></a></div>
 </footer>
 
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/9496259351?text=Hi%20SkillMax!%20I%27d%20like%20to%20know%20more%20about%20your%20courses." target="_blank" class="whatsapp-float" title="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-    const navLinks = document.querySelectorAll(".nav-link");
-    const sections = document.querySelectorAll("section");
-    const navToggle = document.getElementById("navToggle");
-    const navList = document.querySelector(".nav-links");
-    const contactForm = document.getElementById("contactForm");
-    const formStatus = document.getElementById("formStatus");
-    const yearSpan = document.getElementById("year");
+/* COURSE DATA */
+const WHATSAPP="https://wa.me/9496259351";
+const courses={
+    python:{title:"Python Programming",chip:"Beginner Friendly",img:"https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&cs=tinysrgb&w=800",imgAlt:"Python code",description:"Start your coding journey with Python — one of the world's most versatile and in-demand languages. This course takes you from absolute basics to writing real automation scripts and solving complex problems with confidence. Whether you want to pursue data science, web development, or AI, Python is your perfect foundation.",duration:"6–8 Weeks",mode:"Online (Google Meet)",certificate:"Yes — on Completion",skills:["Python Basics & Syntax","Data Types & Variables","Functions & Modules","OOP Concepts","File Handling","Error Handling","Automation Scripts","Problem Solving"]},
+    ml:{title:"Machine Learning",chip:"Model Building",img:"https://images.pexels.com/photos/8386422/pexels-photo-8386422.jpeg?auto=compress&cs=tinysrgb&w=800",imgAlt:"Machine learning",description:"Dive deep into Machine Learning algorithms and model-building techniques used in industry today. Learn how to train, evaluate, and deploy models using real-world datasets. Covers both the mathematical intuition and the practical implementation of ML systems using Python and scikit-learn.",duration:"8–10 Weeks",mode:"Online (Google Meet)",certificate:"Yes — on Completion",skills:["Supervised Learning","Unsupervised Learning","Regression & Classification","Decision Trees & Random Forests","Model Evaluation","Cross Validation","Feature Engineering","scikit-learn"]},
+    datascience:{title:"Data Science",chip:"End-to-End",img:"https://images.pexels.com/photos/7567443/pexels-photo-7567443.jpeg?auto=compress&cs=tinysrgb&w=800",imgAlt:"Data science",description:"Become a data-driven decision maker. This end-to-end course covers everything from raw data ingestion and cleaning to advanced analysis, experimentation, and communicating insights to stakeholders. You'll work with Pandas, NumPy, and Matplotlib to tackle real-world data challenges.",duration:"10–12 Weeks",mode:"Online (Google Meet)",certificate:"Yes — on Completion",skills:["Data Cleaning & Wrangling","Exploratory Data Analysis","Pandas & NumPy","Statistical Analysis","Feature Engineering","Hypothesis Testing","Data Storytelling","End-to-End Projects"]},
+    datavis:{title:"Data Visualization",chip:"Dashboards",img:"https://images.pexels.com/photos/186461/pexels-photo-186461.jpeg?auto=compress&cs=tinysrgb&w=800",imgAlt:"Data visualization",description:"Transform raw numbers into powerful visual narratives. Learn how to design compelling charts, graphs, and interactive dashboards using Matplotlib, Seaborn, and Plotly. This course emphasizes both the artistic and analytical sides of visualization.",duration:"4–6 Weeks",mode:"Online (Google Meet)",certificate:"Yes — on Completion",skills:["Matplotlib & Seaborn","Plotly & Interactive Charts","Dashboard Design","Chart Selection Principles","Color Theory for Data","Storytelling with Data","KPI Dashboards","Real Dataset Projects"]},
+    ai:{title:"Artificial Intelligence",chip:"Deep Learning",img:"https://images.pexels.com/photos/8386434/pexels-photo-8386434.jpeg?auto=compress&cs=tinysrgb&w=800",imgAlt:"AI",description:"Go beyond Machine Learning and explore the frontier of AI. This course covers neural network architectures, deep learning frameworks, computer vision, and NLP fundamentals. You'll build intelligent systems from scratch and understand how AI is shaping every modern industry.",duration:"10–12 Weeks",mode:"Online (Google Meet)",certificate:"Yes — on Completion",skills:["Neural Networks","Deep Learning with TensorFlow/Keras","Convolutional Neural Networks","Recurrent Neural Networks","Transfer Learning","NLP Fundamentals","Image Recognition","AI Project Deployment"]},
+    genai:{title:"Generative AI",chip:"Generative Models",img:"https://images.pexels.com/photos/8386423/pexels-photo-8386423.jpeg?auto=compress&cs=tinysrgb&w=800",imgAlt:"Generative AI",description:"Step into the future of AI creation. This cutting-edge course covers large language models, prompt engineering, image generation with diffusion models, and building AI-powered applications. Learn to harness tools like OpenAI APIs, LangChain, and Stable Diffusion.",duration:"6–8 Weeks",mode:"Online (Google Meet)",certificate:"Yes — on Completion",skills:["LLMs & Transformers","Prompt Engineering","OpenAI / Gemini APIs","LangChain Basics","Diffusion Models","AI Content Generation","RAG Systems","Building AI Apps"]},
+    webdev:{title:"Web Development",chip:"Full Stack",img:"https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=800",imgAlt:"Web development",description:"Build modern, responsive, full-stack web applications from the ground up. This comprehensive course takes you through HTML, CSS, JavaScript, and popular frameworks for both front-end and back-end development. By the end, you'll design, develop, and deploy real-world web projects.",duration:"12–14 Weeks",mode:"Online (Google Meet)",certificate:"Yes — on Completion",skills:["HTML5 & CSS3","JavaScript (ES6+)","Responsive Design","React.js Basics","Node.js & Express","REST APIs","Database Integration","Deployment & Hosting"]},
+    more:{title:"More Courses — Coming Soon",chip:"Coming Soon",img:"https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&w=800",imgAlt:"More courses",description:"SkillM@X is continuously expanding its curriculum. Upcoming tracks include MLOps, Natural Language Processing, Cloud Computing, and more. Reach out on WhatsApp to be notified when new courses launch — early birds get the best pricing!",duration:"Varies by Course",mode:"Online (Google Meet)",certificate:"Yes — on Completion",skills:["MLOps & Model Deployment","Natural Language Processing","Cloud Computing (AWS/GCP)","Computer Vision Advanced","Reinforcement Learning","Data Engineering","AI for Business","Specialized AI Tracks"]}
+};
 
-    if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+function showCourse(id){
+    const c=courses[id];if(!c)return;
+    const skills=c.skills.map(s=>`<span class="skill-tag">${s}</span>`).join("");
+    const msg=encodeURIComponent(`Hi SkillMax! I'm interested in enrolling for the "${c.title}" course. Please share details.`);
+    document.getElementById("detail-card-content").innerHTML=`<div class="detail-hero-img"><img src="${c.img}" alt="${c.imgAlt}"><span class="detail-hero-chip">${c.chip}</span></div><div class="detail-body"><h2>${c.title}</h2><p class="detail-description">${c.description}</p><div class="detail-meta"><div class="detail-meta-item"><i class="fa-solid fa-clock"></i><span><strong>Duration:</strong> ${c.duration}</span></div><div class="detail-meta-item"><i class="fa-solid fa-video"></i><span><strong>Mode:</strong> ${c.mode}</span></div><div class="detail-meta-item"><i class="fa-solid fa-certificate"></i><span><strong>Certificate:</strong> ${c.certificate}</span></div></div><p class="detail-skills-label">Skills You'll Gain</p><div class="detail-skills">${skills}</div><a href="${WHATSAPP}?text=${msg}" target="_blank" class="detail-enroll-btn"><i class="fa-brands fa-whatsapp"></i>Enroll Now on WhatsApp</a></div>`;
+    document.getElementById("courses").style.display="none";
+    const ds=document.getElementById("course-detail-section");ds.classList.add("active");
+    setTimeout(()=>ds.scrollIntoView({behavior:"smooth",block:"start"}),50);
+}
+function hideCourse(){
+    document.getElementById("course-detail-section").classList.remove("active");
+    document.getElementById("courses").style.display="";
+    setTimeout(()=>document.getElementById("courses").scrollIntoView({behavior:"smooth",block:"start"}),50);
+}
 
-    if (navToggle) {
-        navToggle.addEventListener("click", () => {
-            navList.classList.toggle("open");
-            navToggle.classList.toggle("open");
+/* PARTICLES */
+(function(){
+    const canvas=document.getElementById("particle-canvas"),ctx=canvas.getContext("2d");
+    let W,H,pts=[];
+    function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
+    resize();window.addEventListener("resize",()=>{resize();init();});
+    function init(){pts=[];const n=Math.floor(W*H/16000);for(let i=0;i<n;i++)pts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.4+.4,vx:(Math.random()-.5)*.18,vy:(Math.random()-.5)*.18,a:Math.random()*.5+.15});}
+    init();
+    function draw(){ctx.clearRect(0,0,W,H);pts.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(180,200,255,${p.a})`;ctx.fill();p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;});requestAnimationFrame(draw);}
+    draw();
+})();
+
+/* SCROLL PROGRESS */
+window.addEventListener("scroll",()=>{document.getElementById("scroll-progress").style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+"%";});
+
+/* COUNTER */
+function animateCounter(el){
+    const target=parseFloat(el.dataset.target),suffix=el.dataset.suffix||"",isDec=el.dataset.decimal==="true";
+    const dur=1800,start=performance.now();
+    function step(now){const p=Math.min((now-start)/dur,1),e=1-Math.pow(1-p,3),v=target*e;el.textContent=(isDec?v.toFixed(1):Math.floor(v))+suffix;if(p<1)requestAnimationFrame(step);}
+    requestAnimationFrame(step);
+}
+
+/* SKILL BARS */
+function animateBars(){document.querySelectorAll(".skill-bar-fill").forEach(b=>b.style.width=b.dataset.width+"%");}
+
+/* FAQ */
+document.querySelectorAll(".faq-question").forEach(q=>{q.addEventListener("click",()=>{const item=q.parentElement,wasOpen=item.classList.contains("open");document.querySelectorAll(".faq-item").forEach(i=>i.classList.remove("open"));if(!wasOpen)item.classList.add("open");});});
+
+/* COURSE FILTER */
+document.querySelectorAll(".filter-btn").forEach(btn=>{btn.addEventListener("click",()=>{document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));btn.classList.add("active");const f=btn.dataset.filter;document.querySelectorAll(".course-card").forEach(card=>{card.dataset.hidden=f==="all"||card.dataset.category===f?"false":"true";});});});
+
+/* MAIN */
+document.addEventListener("DOMContentLoaded",()=>{
+    const navLinks=document.querySelectorAll(".nav-link"),navToggle=document.getElementById("navToggle"),navList=document.getElementById("navList"),contactForm=document.getElementById("contactForm"),formStatus=document.getElementById("formStatus"),yearSpan=document.getElementById("year");
+    if(yearSpan)yearSpan.textContent=new Date().getFullYear();
+    if(navToggle){navToggle.addEventListener("click",()=>{navList.classList.toggle("open");navToggle.classList.toggle("open");});}
+    navLinks.forEach(l=>l.addEventListener("click",()=>{navList.classList.remove("open");navToggle.classList.remove("open");}));
+
+    new IntersectionObserver(entries=>{entries.forEach(e=>{if(!e.isIntersecting)return;const id=e.target.id;navLinks.forEach(l=>l.classList.toggle("active",l.getAttribute("href")==="#"+id));});},{threshold:.25}).observe.bind(new IntersectionObserver(()=>{}));
+
+    // Section active nav
+    const secObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(!e.isIntersecting)return;const id=e.target.getAttribute("id");navLinks.forEach(l=>l.classList.toggle("active",l.getAttribute("href")==="#"+id));});},{threshold:.25});
+    document.querySelectorAll("section").forEach(s=>secObs.observe(s));
+
+    // Reveal + counters + skill bars
+    const revEls=[...document.querySelectorAll(".reveal,.reveal-left,.reveal-right")];
+    const revObs=new IntersectionObserver(entries=>{
+        entries.forEach(e=>{
+            if(!e.isIntersecting)return;
+            e.target.classList.add("visible");
+            const cnt=e.target.querySelector(".counter-number[data-target]");
+            if(cnt)animateCounter(cnt);
+            if(e.target.id==="skillBars"||e.target.closest("#about"))animateBars();
+            revObs.unobserve(e.target);
         });
-    }
-    navLinks.forEach(link => {
-        link.addEventListener("click", () => {
-            navList.classList.remove("open");
-            navToggle.classList.remove("open");
-        });
-    });
+    },{threshold:.15});
+    revEls.forEach(el=>revObs.observe(el));
 
-    const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (!entry.isIntersecting) return;
-            const id = entry.target.getAttribute("id");
-            navLinks.forEach(link => {
-                link.classList.toggle("active", link.getAttribute("href") === "#" + id);
-            });
-        });
-    }, { threshold: 0.3 });
-
-    sections.forEach(sec => sectionObserver.observe(sec));
-
-    const revealElements = [
-        ...document.querySelectorAll(".hero-content, .hero-visual, .course-card, .about-layout, .contact-layout")
-    ];
-    revealElements.forEach(el => el.classList.add("reveal"));
-
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("visible");
-                revealObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.15 });
-
-    revealElements.forEach(el => revealObserver.observe(el));
-
-    if (contactForm && formStatus) {
-        contactForm.addEventListener("submit", (e) => {
-            e.preventDefault();
-            formStatus.textContent = "Sending message...";
-            formStatus.style.color = "#ffe18a";
-            setTimeout(() => {
-                contactForm.reset();
-                formStatus.textContent = "Thank you! Your message has been registered. We will get back to you.";
-                formStatus.style.color = "#8bc34a";
-            }, 1000);
-        });
-    }
+    if(contactForm&&formStatus){contactForm.addEventListener("submit",e=>{e.preventDefault();formStatus.textContent="Sending message...";formStatus.style.color="#ffe18a";setTimeout(()=>{contactForm.reset();formStatus.textContent="Thank you! Your message has been registered. We will get back to you.";formStatus.style.color="#8bc34a";},1000);});}
 });
 </script>
 </body>
 </html>
-
-
-
-
-
