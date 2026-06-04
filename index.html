@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <style>
+    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=I9KXyI4xdK5zOIo9dYL7Ka08kIAVfc0e5fZpg6sN4H2nUNFDgxAfpNv6mb3sVoTco4VDdDf9scNEIo2JAMm8bgifeDBdXmtJh00ViHaf52zroTJqfeAq0x30_G7OoVuCLQjYe4pTRL0qL-WEMwwYNo5bw2D_Y5eo6Z3kgvIoKzoQq01tCI0HDG1RtQmduXW6wkp9DK1oIYLq_0g75kv33pFWwxKda-GE3FWxay7FNKmKUmTrDMLdbsWR42hnTcvY4QCQofYW_v6wtaXdL5dAJCzoY17OGM5MYaUwl-3hcOpmgdbci7nVMNuN6_ZHGtjU" charset="UTF-8"></script><style>
         :root{--primary:#326acb;--primary-dark:#214b8f;--primary-light:#4d82e6;--accent:#f4b000;--accent-soft:#ffe18a;--bg:#050816;--bg-alt:#0b1535;--text-main:#f5f7ff;--text-muted:#a7b0d9;--radius-lg:18px;--radius-md:12px;--radius-full:999px;--shadow-soft:0 18px 40px rgba(0,0,0,0.45);--shadow-glow:0 0 24px rgba(244,176,0,0.65);--transition-fast:0.2s ease-out;--transition-med:0.35s ease-out;}
         *,*::before,*::after{box-sizing:border-box;}
         html{scroll-behavior:smooth;}
@@ -405,9 +405,9 @@
             <div class="course-body"><h3>Web Development</h3><p>Create responsive, modern web applications from front end to back end deployment.</p></div>
             <span class="click-hint"><i class="fa-solid fa-arrow-right"></i> View Details</span>
         </article>
-        <article class="course-card reveal" onclick="showCourse('more')" data-category="data">
-            <div class="course-image"><img loading="lazy" src="https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&w=800" alt="More Courses"><div class="course-chip">Coming Soon</div><div class="course-orb orb-6"></div><div class="course-icon-strip"><span class="course-icon"><i class="fa-solid fa-cloud"></i></span><span class="course-icon"><i class="fa-solid fa-gears"></i></span><span class="course-icon"><i class="fa-solid fa-flask"></i></span></div></div>
-            <div class="course-body"><h3>More Courses</h3><p>Advanced topics like MLOps, NLP, cloud, and specialized AI tracks are on the roadmap.</p></div>
+        <article class="course-card reveal" onclick="showCourse('more')" data-category="programming">
+            <div class="course-image"><img loading="lazy" src="https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&w=800" alt="IT Fundamentals & Computer Applications"><div class="course-chip">Beginner Friendly</div><div class="course-orb orb-6"></div><div class="course-icon-strip"><span class="course-icon"><i class="fa-solid fa-computer"></i></span><span class="course-icon"><i class="fa-solid fa-desktop"></i></span><span class="course-icon"><i class="fa-solid fa-keyboard"></i></span></div></div>
+            <div class="course-body"><h3>IT Fundamentals & Computer Applications</h3><p>Develop essential computer and IT skills through practical learning. Master computer hardware, software, operating systems, Microsoft Office, internet technologies, digital workflows, and professional productivity tools.</p></div>
             <span class="click-hint"><i class="fa-solid fa-arrow-right"></i> View Details</span>
         </article>
     </div>
@@ -446,7 +446,7 @@
             <div class="about-panel"><span class="panel-label">Certification</span><h3>Recognized achievement</h3><p>Every graduate earns a SkillM@X certificate — a testament to their dedication and skill mastery.</p></div>
         </div>
     </div>
-</section>        
+</section>
 
 <!-- TESTIMONIALS -->
 <section class="section" id="testimonials">
@@ -454,8 +454,8 @@
     <div class="testimonials-grid">
         <div class="testimonial-card reveal">
             <div class="stars">★★★★★</div>
-            <p class="testimonial-text">"The concepts were explained patiently and in a very clear manner, which made it easier for me to understand the basics of Python. The one-to-one sessions made it comfortable to ask questions and clarify my doubts immediately. "</p>
-            <div class="testimonial-author"><div class="author-avatar">AR</div><div><div class="author-name">Krishnanjali Iyer S R.</div><div class="author-course">Python Programming</div></div></div>
+            <p class="testimonial-text">"SkillM@X completely changed my perspective on programming. The Python course was so well structured — I went from zero to building automation scripts in just 6 weeks!"</p>
+            <div class="testimonial-author"><div class="author-avatar">AR</div><div><div class="author-name">Arjun R.</div><div class="author-course">Python Programming</div></div></div>
         </div>
         <div class="testimonial-card reveal" style="transition-delay:.12s">
             <div class="stars">★★★★★</div>
@@ -566,7 +566,7 @@ const courses={
     ai:{title:"Artificial Intelligence",chip:"Deep Learning",img:"https://images.pexels.com/photos/8386434/pexels-photo-8386434.jpeg?auto=compress&cs=tinysrgb&w=800",imgAlt:"AI",description:"Go beyond Machine Learning and explore the frontier of AI. This course covers neural network architectures, deep learning frameworks, computer vision, and NLP fundamentals. You'll build intelligent systems from scratch and understand how AI is shaping every modern industry.",duration:"10–12 Weeks",mode:"Online (Google Meet)",certificate:"Yes — on Completion",skills:["Neural Networks","Deep Learning with TensorFlow/Keras","Convolutional Neural Networks","Recurrent Neural Networks","Transfer Learning","NLP Fundamentals","Image Recognition","AI Project Deployment"]},
     genai:{title:"Generative AI",chip:"Generative Models",img:"https://images.pexels.com/photos/8386423/pexels-photo-8386423.jpeg?auto=compress&cs=tinysrgb&w=800",imgAlt:"Generative AI",description:"Step into the future of AI creation. This cutting-edge course covers large language models, prompt engineering, image generation with diffusion models, and building AI-powered applications. Learn to harness tools like OpenAI APIs, LangChain, and Stable Diffusion.",duration:"6–8 Weeks",mode:"Online (Google Meet)",certificate:"Yes — on Completion",skills:["LLMs & Transformers","Prompt Engineering","OpenAI / Gemini APIs","LangChain Basics","Diffusion Models","AI Content Generation","RAG Systems","Building AI Apps"]},
     webdev:{title:"Web Development",chip:"Full Stack",img:"https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=800",imgAlt:"Web development",description:"Build modern, responsive, full-stack web applications from the ground up. This comprehensive course takes you through HTML, CSS, JavaScript, and popular frameworks for both front-end and back-end development. By the end, you'll design, develop, and deploy real-world web projects.",duration:"12–14 Weeks",mode:"Online (Google Meet)",certificate:"Yes — on Completion",skills:["HTML5 & CSS3","JavaScript (ES6+)","Responsive Design","React.js Basics","Node.js & Express","REST APIs","Database Integration","Deployment & Hosting"]},
-    more:{title:"More Courses — Coming Soon",chip:"Coming Soon",img:"https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&w=800",imgAlt:"More courses",description:"SkillM@X is continuously expanding its curriculum. Upcoming tracks include MLOps, Natural Language Processing, Cloud Computing, and more. Reach out on WhatsApp to be notified when new courses launch — early birds get the best pricing!",duration:"Varies by Course",mode:"Online (Google Meet)",certificate:"Yes — on Completion",skills:["MLOps & Model Deployment","Natural Language Processing","Cloud Computing (AWS/GCP)","Computer Vision Advanced","Reinforcement Learning","Data Engineering","AI for Business","Specialized AI Tracks"]}
+    more:{title:"More Courses — Coming Soon",chip:"Beginner Friendly",img:"https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&w=800",imgAlt:"IT Fundamentals & Computer Applications",description:"Develop essential computer and IT skills through practical learning. Master computer hardware, software, operating systems, Microsoft Office applications, internet technologies, digital workflows, file management, and professional productivity tools required in today's technology-driven world.",duration:"6 Weeks",mode:"Online (Google Meet)",certificate:"Yes — on Completion",skills:["Computer Fundamentals","Computer Hardware & Software","Operating Systems","Microsoft Word","Microsoft Excel","Microsoft PowerPoint","Internet & Email Usage","Digital Productivity Skills"]}
 };
 
 function showCourse(id){
@@ -648,4 +648,3 @@ document.addEventListener("DOMContentLoaded",()=>{
 </script>
 </body>
 </html>
-
